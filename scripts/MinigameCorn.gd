@@ -51,6 +51,12 @@ func _ready() -> void:
 			
 	_show_instruction_popup()
 
+func _exit_tree() -> void:
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
+
 func _process(delta: float) -> void:
 	if not game_active or is_game_over: return
 	

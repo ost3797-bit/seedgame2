@@ -20,9 +20,9 @@ func _ready() -> void:
 	if has_node("/root/AudioManager"):
 		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
-		get_node("/root/MobileUI").hide()
-		
-	boom_template.hide()
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.hide()
+		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		
@@ -34,9 +34,9 @@ func _process(_delta: float) -> void:
 
 func _exit_tree() -> void:
 	if has_node("/root/MobileUI"):
-		get_node("/root/MobileUI").show()
-		
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_fruit_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if not game_active: return

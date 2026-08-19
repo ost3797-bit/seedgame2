@@ -40,7 +40,9 @@ func _ready() -> void:
 
 func _exit_tree() -> void:
 	if has_node("/root/MobileUI"):
-		get_node("/root/MobileUI").show()
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _start_game() -> void:
 	score = 0

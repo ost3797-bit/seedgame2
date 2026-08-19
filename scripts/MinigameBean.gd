@@ -87,6 +87,12 @@ func _ready() -> void:
 	_setup_grid()
 	_setup_inventory()
 
+func _exit_tree() -> void:
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
+
 
 
 func _start_stage(stage: int) -> void:

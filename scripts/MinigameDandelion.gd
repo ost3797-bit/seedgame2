@@ -40,7 +40,9 @@ func _ready():
 	if has_node("/root/AudioManager"):
 		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
-		get_node("/root/MobileUI").hide()
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.hide()
+		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 		
 	is_showing_rules = true
 	is_game_active = false

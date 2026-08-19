@@ -29,7 +29,9 @@ func _ready():
 		AudioManager.play_minigame_bgm()
 	# 모바일 UI(조이스틱) 숨기기
 	if has_node("/root/MobileUI"):
-		get_node("/root/MobileUI").hide()
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.hide()
+		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	round_success_image.hide()
 	

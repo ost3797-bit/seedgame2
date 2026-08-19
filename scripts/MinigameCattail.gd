@@ -29,7 +29,9 @@ func _ready() -> void:
 	if has_node("/root/AudioManager"):
 		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
-		get_node("/root/MobileUI").hide()
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.hide()
+		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 		
 	popup_layer.hide()
 	wind_line.hide()
@@ -47,6 +49,12 @@ func _ready() -> void:
 		basket.body_entered.connect(_on_basket_body_entered)
 	
 	_show_instruction_popup()
+
+func _exit_tree() -> void:
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _show_instruction_popup() -> void:
 	var font_path = "res://fonts/Cafe24Ssurround-v2.0.ttf"
@@ -224,9 +232,6 @@ func _game_over(is_success: bool) -> void:
 	game_active = false
 	game_over = true
 	if spawn_timer: spawn_timer.stop()
-	
-	if has_node("/root/MobileUI"):
-		get_node("/root/MobileUI").show()
 		
 	popup_layer.show()
 	var btn = popup_layer.get_node("Panel/ReturnBtn")
