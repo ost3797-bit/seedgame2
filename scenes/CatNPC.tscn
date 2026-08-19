@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c4pwb2eqfk441"]
+
+[ext_resource type="Texture2D" uid="uid://ceflqen2wx3uq" path="res://assets/npc/cat.png" id="1_tex"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="2_font"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cat"]
+radius = 46.09772
+
+[node name="CatNPC" type="Area2D" unique_id=1102953411]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=46636251]
+position = Vector2(0, -1)
+scale = Vector2(0.19335938, 0.19335938)
+texture = ExtResource("1_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1738939303]
+shape = SubResource("CircleShape2D_cat")
+
+[node name="HintLabel" type="Label" parent="." unique_id=786422185]
+visible = false
+z_index = 10
+offset_left = -150.0
+offset_top = 48.0
+offset_right = 150.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+text = "SPACE를 눌러 대화하기"
+horizontal_alignment = 1

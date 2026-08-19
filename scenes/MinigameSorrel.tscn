@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://noe1u37i8784"]
+
+[ext_resource type="Script" uid="uid://cwqa211sirqre" path="res://scripts/MinigameSorrel.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://buinxevqlxokk" path="res://assets/game/bab/bob_asset.png" id="2_bob"]
+[ext_resource type="Texture2D" uid="uid://cvdqp7q4jblyk" path="res://assets/game/bab/gage.png" id="3_gage"]
+[ext_resource type="Texture2D" uid="uid://dwffrb6m0k7e7" path="res://assets/game/bab/straw.png" id="4_straw"]
+[ext_resource type="Texture2D" uid="uid://cixjnyggih47c" path="res://assets/game/bab/sucess.png" id="5_success"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="9_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.94, 0.97, 0.91, 1)
+
+[node name="MinigameSorrel" type="Control" unique_id=127581639]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="Panel" parent="." unique_id=1126117650]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="PlantImage" type="TextureRect" parent="." unique_id=256736234]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -223.0
+offset_right = 196.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bob")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GaugeBg" type="TextureRect" parent="." unique_id=1367116398]
+layout_mode = 1
+offset_left = 196.0
+offset_top = 393.0
+offset_right = 964.0
+offset_bottom = 733.0
+texture = ExtResource("3_gage")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TargetZone" type="ColorRect" parent="GaugeBg" unique_id=1166961372]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -16.0
+offset_right = 38.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4, 0.9, 0.4, 0.5)
+
+[node name="Indicator" type="TextureRect" parent="." unique_id=1765710791]
+layout_mode = 1
+offset_left = 211.0
+offset_top = 506.0
+offset_right = 445.0
+offset_bottom = 585.0
+texture = ExtResource("4_straw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RulesPopup" type="ColorRect" parent="." unique_id=878935409]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 450.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.15, 0.15, 1)
+
+[node name="RulesText" type="Label" parent="RulesPopup" unique_id=381628173]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_font")
+theme_override_font_sizes/font_size = 32
+text = "[괭이밥 꼬투리 터뜨리기 미션!]
+
+움직이는 화살표가 초록색 영역에 왔을 때 버튼을 누르세요.
+타이밍에 맞춰 총 5번 성공해야 합니다!
+
+총 5라운드를 모두 통과하면 미션 성공입니다!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="RulesPopup" unique_id=987654330]
+self_modulate = Color(0.3, 0.8, 0.2, 1)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -140.0
+offset_right = 150.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("9_font")
+theme_override_font_sizes/font_size = 42
+text = "게임 시작"
+
+[node name="InstructionLabel" type="Label" parent="." unique_id=878935408]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 40.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_horizontal = 2
+pivot_offset = Vector2(300, 30)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("9_font")
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundSuccessImage" type="TextureRect" parent="." unique_id=987654321]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -394.0
+offset_top = 90.0
+offset_right = -94.0
+offset_bottom = 290.0
+grow_horizontal = 0
+texture = ExtResource("5_success")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/CattailSeed.gd" id="1_seed"]
+[ext_resource type="Texture2D" path="res://assets/game/flag/flagseed1.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_seed"]
+radius = 16.0
+
+[node name="CattailSeed" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_seed")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_seed")

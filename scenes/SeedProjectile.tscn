@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dsuq3s0seedp"]
+
+[ext_resource type="Script" path="res://scripts/SeedProjectile.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b032bkyrewvw4" path="res://assets/game/bong/bong_seed.png" id="2_shoot"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bounce"]
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_seed"]
+radius = 9.0
+
+[node name="SeedProjectile" type="RigidBody2D" groups=["seed"]]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_bounce")
+gravity_scale = 1.2
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_shoot")
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_seed")

@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://c3t75l0f5u1k7"]
+
+[ext_resource type="Script" uid="uid://d1qejpahiptw3" path="res://scripts/MinigameDandelion.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cfd52qlrsdt4t" path="res://assets/game/min/bg1.png" id="2_bg1"]
+[ext_resource type="Texture2D" uid="uid://f6j23ryf1it6" path="res://assets/game/min/bg2.png" id="3_bg2"]
+[ext_resource type="Texture2D" uid="uid://c7bthfrsjj6pk" path="res://assets/game/min/bg3.png" id="4_bg3"]
+[ext_resource type="Texture2D" uid="uid://dsbs0j63sgc2l" path="res://assets/game/min/seed8.png" id="5_seed8"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="6_font"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bounds"]
+size = Vector2(3000, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_player"]
+radius = 30.0
+
+[sub_resource type="Animation" id="Animation_fly"]
+resource_name = "fly"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_seed"]
+_data = {
+&"fly": SubResource("Animation_fly")
+}
+
+[node name="MinigameDandelion" type="Node2D" unique_id=1]
+script = ExtResource("1_script")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=2]
+
+[node name="Layer1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=3]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(2018.587, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer1" unique_id=4]
+position = Vector2(4, 0)
+scale = Vector2(0.7261518, 0.53429604)
+texture = ExtResource("2_bg1")
+centered = false
+
+[node name="Layer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=5]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(2028.181, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer2" unique_id=6]
+position = Vector2(1, 156)
+scale = Vector2(0.78006953, 0.7157025)
+texture = ExtResource("3_bg2")
+centered = false
+
+[node name="Layer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=7]
+motion_scale = Vector2(1, 0)
+motion_mirroring = Vector2(2018.196, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Layer3" unique_id=8]
+position = Vector2(2, 522)
+scale = Vector2(0.6763392, 0.4646839)
+texture = ExtResource("4_bg3")
+centered = false
+
+[node name="DeathZones" type="Node2D" parent="." unique_id=9]
+
+[node name="TopBound" type="Area2D" parent="DeathZones" unique_id=10]
+position = Vector2(576, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZones/TopBound" unique_id=11]
+shape = SubResource("RectangleShape2D_bounds")
+
+[node name="BottomBound" type="Area2D" parent="DeathZones" unique_id=12]
+position = Vector2(576, 698)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZones/BottomBound" unique_id=13]
+shape = SubResource("RectangleShape2D_bounds")
+
+[node name="ObstacleContainer" type="Node2D" parent="." unique_id=14]
+
+[node name="Player" type="RigidBody2D" parent="." unique_id=15]
+position = Vector2(300, 324)
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=16]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_seed8")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=17]
+shape = SubResource("CircleShape2D_player")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=18]
+libraries/ = SubResource("AnimationLibrary_seed")
+autoplay = &"fly"
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=19]
+layer = 100
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=20]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 48
+text = "0 / 10"
+horizontal_alignment = 1
+
+[node name="RulesPopup" type="ColorRect" parent="UI" unique_id=21]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -459.0
+offset_top = -245.0
+offset_right = 441.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.15, 0.15, 1)
+
+[node name="RulesText" type="Label" parent="UI/RulesPopup" unique_id=22]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 16.0
+offset_right = -2.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 32
+text = "[민들레 씨앗의 비행]
+
+클릭/터치/스페이스바를 누르면 씨앗이 위로 날아오릅니다.
+다가오는 장애물을 피해 총 10개의 틈을 통과하세요!
+
+끝까지 버티면 미션 성공입니다!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="UI/RulesPopup" unique_id=23]
+self_modulate = Color(0.3, 0.8, 0.2, 1)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -140.0
+offset_right = 150.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 42
+text = "게임 시작"

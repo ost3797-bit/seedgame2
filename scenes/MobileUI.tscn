@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cuau5y1xle54f"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_joy"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="2_font"]
+
+[sub_resource type="Gradient" id="Gradient_ui"]
+offsets = PackedFloat32Array(0, 0.65, 0.68, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ui"]
+gradient = SubResource("Gradient_ui")
+width = 150
+height = 150
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="MobileUI" type="CanvasLayer" unique_id=16214464]
+layer = 90
+
+[node name="VirtualJoystick" parent="." unique_id=658572753 instance=ExtResource("1_joy")]
+offset_left = 20.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = -20.0
+
+[node name="ActionButton" type="TouchScreenButton" parent="." unique_id=839084289]
+position = Vector2(909.00006, 406.00003)
+scale = Vector2(1.5999999, 1.5999999)
+texture_normal = SubResource("GradientTexture2D_ui")
+action = "ui_accept"
+
+[node name="Label" type="Label" parent="ActionButton" unique_id=62349283]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "말하기
+(SPACE)"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

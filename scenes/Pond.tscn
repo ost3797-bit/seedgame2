@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://jcs24o5fegwp"]
+
+[ext_resource type="Script" uid="uid://d0tidulbh24x0" path="res://scripts/Pond.gd" id="1_pond"]
+[ext_resource type="Texture2D" uid="uid://dfltitdxjb67o" path="res://assets/maps/map3.png" id="2_map3tex"]
+[ext_resource type="Script" uid="uid://bw8063sb1m1bi" path="res://scripts/Portal.gd" id="3_portal"]
+[ext_resource type="PackedScene" uid="uid://dy2dmmaacfeqq" path="res://scenes/Player.tscn" id="5_player"]
+[ext_resource type="Texture2D" uid="uid://co3jms54iu5go" path="res://assets/npc/frog.png" id="6_frog"]
+[ext_resource type="Texture2D" uid="uid://dvmmh6ckk0neq" path="res://assets/game/water/water hyacinth.png" id="7_hyacinth"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="8_font"]
+[ext_resource type="Texture2D" uid="uid://uvfvsqgqjxtx" path="res://assets/game/back.png" id="9_close"]
+[ext_resource type="Texture2D" uid="uid://rrmppvbsx0mo" path="res://assets/game/get1.png" id="10_get1"]
+[ext_resource type="Texture2D" uid="uid://bojry23ibukre" path="res://assets/game/flag/flag1.png" id="11_cattail"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
+size = Vector2(400, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npc"]
+size = Vector2(116.5, 123.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyacinth"]
+size = Vector2(64, 113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cattail"]
+size = Vector2(80, 125)
+
+[node name="Pond" type="Node2D" unique_id=1055176049]
+script = ExtResource("1_pond")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=600572313]
+texture = ExtResource("2_map3tex")
+
+[node name="Portals" type="Node2D" parent="." unique_id=1055576987]
+
+[node name="PortalToPlaza" type="Area2D" parent="Portals" unique_id=589683137]
+position = Vector2(0, -540)
+script = ExtResource("3_portal")
+target_scene = "res://scenes/MainPlaza.tscn"
+target_spawn_marker = "FromPond"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/PortalToPlaza" unique_id=1801065079]
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=155870543]
+
+[node name="Default" type="Marker2D" parent="SpawnPoints" unique_id=719784361]
+
+[node name="FromPlaza" type="Marker2D" parent="SpawnPoints" unique_id=696785230]
+position = Vector2(21, -431)
+
+[node name="Colliders" type="Node2D" parent="." unique_id=1307591719]
+
+[node name="Player" parent="." unique_id=1748653113 instance=ExtResource("5_player")]
+position = Vector2(20.538145, -430.6365)
+scale = Vector2(0.8, 0.8)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1950892311]
+position = Vector2(1.2499999, 3.7499995)
+limit_left = -960
+limit_top = -540
+limit_right = 960
+limit_bottom = 540
+
+[node name="FrogNPC" type="Area2D" parent="." unique_id=1535859385]
+position = Vector2(363.25708, -105.29663)
+
+[node name="Sprite2D" type="Sprite2D" parent="FrogNPC" unique_id=225699856]
+position = Vector2(-12.25708, -41.703377)
+scale = Vector2(0.16170214, 0.17208122)
+texture = ExtResource("6_frog")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogNPC" unique_id=947716680]
+position = Vector2(6.49292, -71.95337)
+shape = SubResource("RectangleShape2D_npc")
+
+[node name="QuestMarker" type="Label" parent="FrogNPC" unique_id=1663386928]
+offset_left = -50.25708
+offset_top = -173.70337
+offset_right = 12.74292
+offset_bottom = -68.70337
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+
+[node name="HyacinthPlant" type="Area2D" parent="." unique_id=1426545116]
+position = Vector2(-258.38373, -154.59918)
+
+[node name="Sprite2D" type="Sprite2D" parent="HyacinthPlant" unique_id=452397476]
+position = Vector2(-9.808144, -20.450415)
+scale = Vector2(0.5220714, 0.5146714)
+texture = ExtResource("7_hyacinth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HyacinthPlant" unique_id=1956656137]
+position = Vector2(-7.616272, -45.900818)
+shape = SubResource("RectangleShape2D_hyacinth")
+
+[node name="QuestMarker" type="Label" parent="HyacinthPlant" unique_id=1267127322]
+offset_left = -34.616272
+offset_top = -150.40082
+offset_right = 16.383728
+offset_bottom = -45.400818
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+
+[node name="CattailPlant" type="Area2D" parent="." unique_id=238214260]
+position = Vector2(711.09216, 220.8634)
+
+[node name="Sprite2D" type="Sprite2D" parent="CattailPlant" unique_id=1460689760]
+position = Vector2(2.9078293, -69.86338)
+scale = Vector2(0.16013815, 0.16013813)
+texture = ExtResource("11_cattail")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CattailPlant" unique_id=1828719793]
+position = Vector2(-0.092163086, -74.3634)
+shape = SubResource("RectangleShape2D_cattail")
+
+[node name="QuestMarker" type="Label" parent="CattailPlant" unique_id=326677556]
+offset_left = -21.092163
+offset_top = -218.8634
+offset_right = 28.907837
+offset_bottom = -113.8634
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+
+[node name="RewardPopup" type="CanvasLayer" parent="." unique_id=861312441]
+layer = 120
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="RewardPopup" unique_id=947045465]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="RewardCard" type="TextureRect" parent="RewardPopup" unique_id=2020959762]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.584
+anchor_right = 0.5
+anchor_bottom = 0.584
+offset_left = -252.0
+offset_top = -149.432
+offset_right = 248.0
+offset_bottom = 179.568
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GetBanner" type="TextureRect" parent="RewardPopup" unique_id=1378143301]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_get1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnClose" type="TextureButton" parent="RewardPopup" unique_id=1646912081]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.907
+anchor_right = 0.5
+anchor_bottom = 0.907
+offset_left = -191.0
+offset_top = -93.736
+offset_right = 185.0
+offset_bottom = 94.264
+texture_normal = ExtResource("9_close")
+ignore_texture_size = true
+stretch_mode = 0

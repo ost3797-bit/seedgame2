@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://camelliamini1"]
+
+[ext_resource type="Script" uid="uid://camelliascript1" path="res://scripts/MinigameCamellia.gd" id="1_c"]
+[ext_resource type="Texture2D" uid="uid://camelliabg1" path="res://assets/game/Camellia/camellia_bg.png" id="2_c"]
+[ext_resource type="Texture2D" uid="uid://camellia1tex" path="res://assets/game/Camellia/camellia_1.png" id="3_c"]
+[ext_resource type="Texture2D" uid="uid://boom1tex" path="res://assets/game/Camellia/boom.png" id="4_c"]
+[ext_resource type="Texture2D" uid="uid://hammertex" path="res://assets/game/Camellia/hammer.png" id="6_hammer"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="5_c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fruit"]
+radius = 300.0
+
+[node name="MinigameCamellia" type="Node2D" unique_id=2001]
+script = ExtResource("1_c")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2002]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2003]
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("2_c")
+
+[node name="FruitArea" type="Area2D" parent="." unique_id=2004]
+
+[node name="Sprite2D" type="Sprite2D" parent="FruitArea" unique_id=2005]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitArea" unique_id=2006]
+shape = SubResource("CircleShape2D_fruit")
+
+[node name="BoomTemplate" type="Sprite2D" parent="." unique_id=2007]
+visible = false
+texture = ExtResource("4_c")
+scale = Vector2(0.035, 0.035)
+
+[node name="HammerCursor" type="Sprite2D" parent="." unique_id=2008]
+z_index = 100
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("6_hammer")
+offset = Vector2(300, -300)
+
+[node name="PopupLayer" type="CanvasLayer" parent="." unique_id=2013]
+layer = 100
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PopupLayer" unique_id=2014]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="Panel" type="Panel" parent="PopupLayer" unique_id=2015]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="PopupLayer/Panel" unique_id=2016]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_c")
+theme_override_font_sizes/font_size = 48
+text = "결과"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="PopupLayer/Panel" unique_id=2017]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_c")
+theme_override_font_sizes/font_size = 24
+text = "내용"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ReturnBtn" type="Button" parent="PopupLayer/Panel" unique_id=2018]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_c")
+theme_override_font_sizes/font_size = 28
+text = "마을로 돌아가기"

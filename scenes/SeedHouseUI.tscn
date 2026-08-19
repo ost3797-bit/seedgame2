@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://seedhouseui1"]
+
+[ext_resource type="Script" uid="uid://dgmtau0o08yp" path="res://scripts/SeedHouseUI.gd" id="1_shui"]
+[ext_resource type="Texture2D" uid="uid://chqxuypdw06ml" path="res://assets/game/cardbox.png" id="2_cardbox"]
+
+[node name="SeedHouseUI" type="CanvasLayer" unique_id=987123]
+layer = 120
+script = ExtResource("1_shui")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=987124]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Control" type="Control" parent="." unique_id=987125]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Control" unique_id=987126]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cardbox")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseButton" type="Button" parent="Control" unique_id=987127]
+modulate = Color(1, 0, 0, 0.5)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -650.0
+offset_top = 594.0
+offset_right = -498.0
+offset_bottom = 645.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="Slots" type="Control" parent="Control" unique_id=987128]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Slot1" type="TextureRect" parent="Control/Slots" unique_id=987129]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 133.0
+offset_right = 269.0
+offset_bottom = 304.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="TextureRect" parent="Control/Slots" unique_id=987130]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 133.0
+offset_right = 457.0
+offset_bottom = 305.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="TextureRect" parent="Control/Slots" unique_id=987131]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 133.0
+offset_right = 645.0
+offset_bottom = 304.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot4" type="TextureRect" parent="Control/Slots" unique_id=987132]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 132.0
+offset_right = 833.0
+offset_bottom = 305.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot5" type="TextureRect" parent="Control/Slots" unique_id=987133]
+layout_mode = 0
+offset_left = 884.0
+offset_top = 133.0
+offset_right = 1020.0
+offset_bottom = 304.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot6" type="TextureRect" parent="Control/Slots" unique_id=987134]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 342.0
+offset_right = 268.0
+offset_bottom = 510.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot7" type="TextureRect" parent="Control/Slots" unique_id=987135]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 342.0
+offset_right = 456.0
+offset_bottom = 509.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot8" type="TextureRect" parent="Control/Slots" unique_id=987136]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 342.0
+offset_right = 648.0
+offset_bottom = 512.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot9" type="TextureRect" parent="Control/Slots" unique_id=987137]
+layout_mode = 0
+offset_left = 695.0
+offset_top = 342.0
+offset_right = 836.0
+offset_bottom = 511.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot10" type="TextureRect" parent="Control/Slots" unique_id=987138]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 342.0
+offset_right = 1020.0
+offset_bottom = 510.0
+expand_mode = 1
+stretch_mode = 5

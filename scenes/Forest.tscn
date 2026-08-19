@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://cforest000001"]
+
+[ext_resource type="Script" uid="uid://bssciyey17imh" path="res://scripts/Forest.gd" id="1_mapctrl"]
+[ext_resource type="Texture2D" uid="uid://7ba8pxjhci28" path="res://assets/maps/map5.png" id="2_map5tex"]
+[ext_resource type="Script" uid="uid://bw8063sb1m1bi" path="res://scripts/Portal.gd" id="3_portal"]
+[ext_resource type="PackedScene" uid="uid://dy2dmmaacfeqq" path="res://scenes/Player.tscn" id="5_player_scene"]
+[ext_resource type="Texture2D" uid="uid://cbvmkau33b1mt" path="res://assets/npc/squirrel.png" id="6_squirrel"]
+[ext_resource type="Texture2D" uid="uid://cpuj61fo3nvff" path="res://assets/game/maple/maple_seed.png" id="7_maple"]
+[ext_resource type="Texture2D" uid="uid://bkta6mdwnmmld" path="res://assets/game/Camellia/camellia_seed.png" id="8_camellia"]
+[ext_resource type="Texture2D" uid="uid://csm3xcgteamld" path="res://assets/game/bab/bobcard.png" id="9_placeholder_card"]
+[ext_resource type="Texture2D" uid="uid://rrmppvbsx0mo" path="res://assets/game/get1.png" id="10_get1"]
+[ext_resource type="Texture2D" uid="uid://uvfvsqgqjxtx" path="res://assets/game/back.png" id="11_back"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="12_font"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right"]
+size = Vector2(80, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
+size = Vector2(107.41809, 82.56363)
+
+[node name="Forest" type="Node2D" unique_id=1119672688]
+script = ExtResource("1_mapctrl")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1048885691]
+texture = ExtResource("2_map5tex")
+
+[node name="Portals" type="Node2D" parent="." unique_id=564568381]
+
+[node name="PortalToPlaza" type="Area2D" parent="Portals" unique_id=677453073]
+position = Vector2(960, 0)
+script = ExtResource("3_portal")
+target_scene = "res://scenes/MainPlaza.tscn"
+target_spawn_marker = "FromForest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/PortalToPlaza" unique_id=1847284858]
+position = Vector2(309, -83)
+shape = SubResource("RectangleShape2D_right")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=488711485]
+
+[node name="Default" type="Marker2D" parent="SpawnPoints" unique_id=2146988948]
+
+[node name="FromPlaza" type="Marker2D" parent="SpawnPoints" unique_id=2006021016]
+position = Vector2(1177, -97)
+
+[node name="Colliders" type="Node2D" parent="." unique_id=1358780748]
+
+[node name="Player" parent="." unique_id=2010524427 instance=ExtResource("5_player_scene")]
+position = Vector2(1175.3, -97.900024)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=38857198]
+limit_left = -1365
+limit_top = -768
+limit_right = 1365
+limit_bottom = 768
+
+[node name="SquirrelNPC" type="Area2D" parent="." unique_id=892348710]
+position = Vector2(630.17236, -267.87274)
+
+[node name="Sprite2D" type="Sprite2D" parent="SquirrelNPC" unique_id=892348711]
+position = Vector2(7.584532, 11.129648)
+scale = Vector2(0.08350961, 0.08839241)
+texture = ExtResource("6_squirrel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SquirrelNPC" unique_id=892348712]
+position = Vector2(11.163818, 9.436371)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="QuestMarker" type="Label" parent="SquirrelNPC" unique_id=892348714]
+offset_left = -2.1723633
+offset_top = -133.12726
+offset_right = 37.827637
+offset_bottom = -28.127258
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MapleTree" type="Area2D" parent="." unique_id=892348715]
+position = Vector2(-26.044434, -193.69165)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapleTree" unique_id=892348716]
+position = Vector2(17.044436, -3.3083534)
+scale = Vector2(0.26829818, 0.2373668)
+texture = ExtResource("7_maple")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapleTree" unique_id=892348717]
+position = Vector2(18.335388, -8.30835)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="QuestMarker" type="Label" parent="MapleTree" unique_id=892348719]
+offset_left = 0.044433594
+offset_top = -147.30835
+offset_right = 40.044434
+offset_bottom = -42.30835
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CamelliaTree" type="Area2D" parent="." unique_id=892348720]
+position = Vector2(724.32544, 613.74054)
+
+[node name="Sprite2D" type="Sprite2D" parent="CamelliaTree" unique_id=892348721]
+position = Vector2(7.674576, -1.7405529)
+scale = Vector2(0.2836774, 0.2946884)
+texture = ExtResource("8_camellia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamelliaTree" unique_id=892348722]
+position = Vector2(5.0926514, -2.4587402)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="QuestMarker" type="Label" parent="CamelliaTree" unique_id=892348724]
+offset_left = -17.32544
+offset_top = -137.74054
+offset_right = 22.67456
+offset_bottom = -32.74054
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RewardPopup" type="CanvasLayer" parent="." unique_id=987654323]
+layer = 110
+visible = false
+
+[node name="Overlay" type="ColorRect" parent="RewardPopup" unique_id=1307216196]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="RewardCard" type="TextureRect" parent="RewardPopup" unique_id=892738030]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.58400005
+anchor_right = 0.5
+anchor_bottom = 0.58400005
+offset_left = -252.0
+offset_top = -149.43204
+offset_right = 248.0
+offset_bottom = 179.56796
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_placeholder_card")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GetBanner" type="TextureRect" parent="RewardPopup" unique_id=764721677]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_get1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnClose" type="TextureButton" parent="RewardPopup" unique_id=1759194819]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.90700006
+anchor_right = 0.5
+anchor_bottom = 0.90700006
+offset_left = -191.0
+offset_top = -93.73602
+offset_right = 185.0
+offset_bottom = 94.26398
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_back")
+ignore_texture_size = true
+stretch_mode = 5

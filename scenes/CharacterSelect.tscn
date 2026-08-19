@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dr1h3fndblugh"]
+
+[ext_resource type="Script" uid="uid://b4gy4048cp01r" path="res://scripts/CharacterSelect.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dj4pc6wjdfdy6" path="res://assets/bg/select_bg.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://dj4n5vdbwj6xn" path="res://assets/character/character1.png" id="3_char1"]
+[ext_resource type="Texture2D" uid="uid://cihdp64x2klyb" path="res://assets/character/character2.png" id="4_char2"]
+[ext_resource type="Texture2D" uid="uid://6712nin2g3d0" path="res://assets/bg/3.png" id="5_btn3"]
+
+[node name="CharacterSelect" type="Control" unique_id=133349774]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1415372795]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="SpriteChar1" type="Sprite2D" parent="." unique_id=1943369240]
+position = Vector2(445.12503, 347.6876)
+scale = Vector2(0.8487503, 0.84875023)
+texture = ExtResource("3_char1")
+hframes = 4
+vframes = 4
+
+[node name="BtnChar1" type="Button" parent="." unique_id=423274046]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 226.0
+offset_right = 547.0
+offset_bottom = 495.0
+flat = true
+
+[node name="SpriteChar2" type="Sprite2D" parent="." unique_id=383991695]
+position = Vector2(716.3749, 347.0625)
+scale = Vector2(0.8062506, 0.8062506)
+texture = ExtResource("4_char2")
+hframes = 4
+vframes = 4
+
+[node name="BtnChar2" type="Button" parent="." unique_id=1715307311]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 225.0
+offset_right = 811.0
+offset_bottom = 489.0
+flat = true
+
+[node name="BtnSelectComplete" type="TextureButton" parent="." unique_id=1460944400]
+layout_mode = 0
+offset_left = 453.0
+offset_top = 524.0
+offset_right = 703.0
+offset_bottom = 650.0
+texture_normal = ExtResource("5_btn3")
+ignore_texture_size = true
+stretch_mode = 0

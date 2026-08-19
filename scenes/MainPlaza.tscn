@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cyc8wgvxyyiuq"]
+
+[ext_resource type="Script" uid="uid://ddf8a23p7sn1y" path="res://scripts/MainPlaza.gd" id="1_mainplaza"]
+[ext_resource type="Texture2D" uid="uid://c8ejq2tjx431b" path="res://assets/maps/map1.png" id="2_map1tex"]
+[ext_resource type="Script" uid="uid://bw8063sb1m1bi" path="res://scripts/Portal.gd" id="3_portal"]
+[ext_resource type="PackedScene" uid="uid://dy2dmmaacfeqq" path="res://scenes/Player.tscn" id="5_player_scene"]
+[ext_resource type="Shader" uid="uid://dkb4jolusoiag" path="res://shaders/outline.gdshader" id="6_outline"]
+[ext_resource type="Texture2D" uid="uid://qgamobhhb8xh" path="res://assets/game/seedhouse.png" id="7_seedhouse"]
+[ext_resource type="PackedScene" uid="uid://seedhouseui1" path="res://scenes/SeedHouseUI.tscn" id="8_seedhouseui"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_outline"]
+shader = ExtResource("6_outline")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 4.0
+shader_parameter/outline_enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seedhouse"]
+size = Vector2(287, 311)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_top"]
+size = Vector2(400, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
+size = Vector2(400, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left"]
+size = Vector2(80, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right"]
+size = Vector2(80, 400)
+
+[node name="MainPlaza" type="Node2D" unique_id=390180869]
+script = ExtResource("1_mainplaza")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=155143721]
+texture = ExtResource("2_map1tex")
+
+[node name="SeedHouse" type="Area2D" parent="." unique_id=987654321]
+position = Vector2(0, -180)
+
+[node name="Sprite2D" type="Sprite2D" parent="SeedHouse" unique_id=987654322]
+material = SubResource("ShaderMaterial_outline")
+position = Vector2(-448.5, -47.3125)
+scale = Vector2(0.3908413, 0.34627256)
+texture = ExtResource("7_seedhouse")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeedHouse" unique_id=987654323]
+position = Vector2(-458.5, -52.5)
+shape = SubResource("RectangleShape2D_seedhouse")
+
+[node name="Portals" type="Node2D" parent="." unique_id=1297587375]
+
+[node name="PortalToFlower" type="Area2D" parent="Portals" unique_id=393463815]
+position = Vector2(0, -540)
+script = ExtResource("3_portal")
+target_scene = "res://scenes/FlowerGarden.tscn"
+target_spawn_marker = "FromPlaza"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/PortalToFlower" unique_id=487935468]
+shape = SubResource("RectangleShape2D_top")
+
+[node name="PortalToPond" type="Area2D" parent="Portals" unique_id=365845122]
+position = Vector2(0, 540)
+script = ExtResource("3_portal")
+target_scene = "res://scenes/Pond.tscn"
+target_spawn_marker = "FromPlaza"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/PortalToPond" unique_id=191205331]
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="PortalToForest" type="Area2D" parent="Portals" unique_id=540890183]
+position = Vector2(-960, 0)
+script = ExtResource("3_portal")
+target_scene = "res://scenes/Forest.tscn"
+target_spawn_marker = "FromPlaza"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/PortalToForest" unique_id=791730607]
+shape = SubResource("RectangleShape2D_left")
+
+[node name="PortalToFarm" type="Area2D" parent="Portals" unique_id=454223974]
+position = Vector2(960, 0)
+script = ExtResource("3_portal")
+target_scene = "res://scenes/Farm.tscn"
+target_spawn_marker = "FromPlaza"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/PortalToFarm" unique_id=1935248060]
+shape = SubResource("RectangleShape2D_right")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1284487567]
+
+[node name="Default" type="Marker2D" parent="SpawnPoints" unique_id=737447871]
+
+[node name="FromFlower" type="Marker2D" parent="SpawnPoints" unique_id=353091857]
+position = Vector2(16, -412)
+
+[node name="FromPond" type="Marker2D" parent="SpawnPoints" unique_id=397771181]
+position = Vector2(13, 415)
+
+[node name="FromForest" type="Marker2D" parent="SpawnPoints" unique_id=138853795]
+position = Vector2(-825, -13)
+
+[node name="FromFarm" type="Marker2D" parent="SpawnPoints" unique_id=1028073310]
+position = Vector2(825, 0)
+
+[node name="Colliders" type="Node2D" parent="." unique_id=1271526198]
+
+[node name="Player" parent="." unique_id=2128352782 instance=ExtResource("5_player_scene")]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2011978036]
+zoom = Vector2(0.6, 0.6)
+limit_left = -960
+limit_top = -540
+limit_right = 960
+limit_bottom = 540
+
+[node name="SeedHouseUI" parent="." unique_id=987654325 instance=ExtResource("8_seedhouseui")]

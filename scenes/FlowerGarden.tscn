@@ -1,0 +1,235 @@
+[gd_scene format=3 uid="uid://cflower000001"]
+
+[ext_resource type="Script" uid="uid://oeou3hduqe23" path="res://scripts/FlowerGarden.gd" id="1_mapctrl"]
+[ext_resource type="Texture2D" uid="uid://c88huevxq6kpy" path="res://assets/maps/map2.png" id="2_map2tex"]
+[ext_resource type="Script" uid="uid://bw8063sb1m1bi" path="res://scripts/Portal.gd" id="3_portal"]
+[ext_resource type="PackedScene" uid="uid://dy2dmmaacfeqq" path="res://scenes/Player.tscn" id="5_player_scene"]
+[ext_resource type="PackedScene" uid="uid://c4pwb2eqfk441" path="res://scenes/CatNPC.tscn" id="6_cat_npc"]
+[ext_resource type="Texture2D" uid="uid://oq2n6klmhrkp" path="res://assets/game/bab/bob.png" id="7_bob"]
+[ext_resource type="Texture2D" uid="uid://csm3xcgteamld" path="res://assets/game/bab/bobcard.png" id="8_bobcard"]
+[ext_resource type="Texture2D" uid="uid://rrmppvbsx0mo" path="res://assets/game/get1.png" id="9_get1"]
+[ext_resource type="Texture2D" uid="uid://uvfvsqgqjxtx" path="res://assets/game/back.png" id="10_back"]
+[ext_resource type="Texture2D" uid="uid://ba36lbq0x432d" path="res://assets/game/bong/stay.png" id="11_bong"]
+[ext_resource type="Texture2D" uid="uid://divwoybcc7e3q" path="res://assets/game/min/min1.png" id="12_min"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bottom"]
+size = Vector2(87, 80)
+
+[node name="FlowerGarden" type="Node2D" unique_id=933594680]
+script = ExtResource("1_mapctrl")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1399172583]
+texture = ExtResource("2_map2tex")
+
+[node name="Portals" type="Node2D" parent="." unique_id=1440627902]
+
+[node name="PortalToPlaza" type="Area2D" parent="Portals" unique_id=1397090990]
+position = Vector2(0, 540)
+script = ExtResource("3_portal")
+target_scene = "res://scenes/MainPlaza.tscn"
+target_spawn_marker = "FromFlower"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/PortalToPlaza" unique_id=782219898]
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1535638349]
+
+[node name="Default" type="Marker2D" parent="SpawnPoints" unique_id=496249794]
+
+[node name="FromPlaza" type="Marker2D" parent="SpawnPoints" unique_id=794236168]
+position = Vector2(14, 417)
+
+[node name="Colliders" type="Node2D" parent="." unique_id=1332772484]
+
+[node name="Player" parent="." unique_id=888183328 instance=ExtResource("5_player_scene")]
+position = Vector2(24, -147)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=148137402]
+zoom = Vector2(1.2, 1.2)
+limit_left = -960
+limit_top = -540
+limit_right = 960
+limit_bottom = 540
+
+[node name="CatNPC" parent="." unique_id=1188068120 instance=ExtResource("6_cat_npc")]
+position = Vector2(0, -221)
+
+[node name="QuestMarker" type="Label" parent="CatNPC" unique_id=1066378536]
+offset_left = -24.0
+offset_top = -97.0
+offset_right = 16.0
+offset_bottom = -30.0
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SorrelPlant" type="Area2D" parent="." unique_id=987654322]
+position = Vector2(-553, -163)
+
+[node name="Sprite2D" type="Sprite2D" parent="SorrelPlant" unique_id=1283383556]
+position = Vector2(-6, -2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_bob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SorrelPlant" unique_id=1371821881]
+position = Vector2(-7, -1)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="HintLabel" type="Label" parent="SorrelPlant" unique_id=1842174855]
+visible = false
+offset_left = -30.0
+offset_top = -60.0
+offset_right = 30.0
+offset_bottom = -30.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "SPACE"
+horizontal_alignment = 1
+
+[node name="QuestMarker" type="Label" parent="SorrelPlant" unique_id=1514149976]
+offset_left = -24.0
+offset_top = -85.0
+offset_right = 16.0
+offset_bottom = -18.0
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BalsamPlant" type="Area2D" parent="." unique_id=987654324]
+position = Vector2(624, -115)
+
+[node name="Sprite2D" type="Sprite2D" parent="BalsamPlant" unique_id=1223453900]
+position = Vector2(7, -7)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_bong")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BalsamPlant" unique_id=620847034]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="HintLabel" type="Label" parent="BalsamPlant" unique_id=1108729684]
+visible = false
+offset_left = -30.0
+offset_top = -60.0
+offset_right = 30.0
+offset_bottom = -30.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "SPACE"
+horizontal_alignment = 1
+
+[node name="QuestMarker" type="Label" parent="BalsamPlant" unique_id=1462578774]
+offset_left = -18.0
+offset_top = -91.0
+offset_right = 22.0
+offset_bottom = -24.0
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DandelionPlant" type="Area2D" parent="." unique_id=987654326]
+position = Vector2(508, 410)
+
+[node name="Sprite2D" type="Sprite2D" parent="DandelionPlant" unique_id=1223453901]
+position = Vector2(-1.1444092e-05, -1.9999943)
+scale = Vector2(0.2845771, 0.29523802)
+texture = ExtResource("12_min")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DandelionPlant" unique_id=620847035]
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_bottom")
+
+[node name="HintLabel" type="Label" parent="DandelionPlant" unique_id=1108729685]
+visible = false
+offset_left = -30.0
+offset_top = -60.0
+offset_right = 30.0
+offset_bottom = -30.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "SPACE"
+horizontal_alignment = 1
+
+[node name="QuestMarker" type="Label" parent="DandelionPlant" unique_id=1462578775]
+offset_left = -18.0
+offset_top = -91.0
+offset_right = 22.0
+offset_bottom = -24.0
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 80
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RewardPopup" type="CanvasLayer" parent="." unique_id=987654323]
+layer = 110
+visible = false
+
+[node name="Overlay" type="ColorRect" parent="RewardPopup" unique_id=1307216196]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="RewardCard" type="TextureRect" parent="RewardPopup" unique_id=892738030]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.58400005
+anchor_right = 0.5
+anchor_bottom = 0.58400005
+offset_left = -252.0
+offset_top = -149.43204
+offset_right = 248.0
+offset_bottom = 179.56796
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_bobcard")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GetBanner" type="TextureRect" parent="RewardPopup" unique_id=764721677]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_get1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnClose" type="TextureButton" parent="RewardPopup" unique_id=1759194819]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.90700006
+anchor_right = 0.5
+anchor_bottom = 0.90700006
+offset_left = -191.0
+offset_top = -93.73602
+offset_right = 185.0
+offset_bottom = 94.26398
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("10_back")
+ignore_texture_size = true
+stretch_mode = 5

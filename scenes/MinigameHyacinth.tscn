@@ -1,0 +1,324 @@
+[gd_scene format=3 uid="uid://dxgvdsm53lwpg"]
+
+[ext_resource type="Script" uid="uid://cibfkpuul70se" path="res://scripts/MinigameHyacinth.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c7j1j4ttcqvjd" path="res://assets/game/water/water_bg.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://dtnptkooh8cal" path="res://assets/game/water/net1.png" id="3_net"]
+[ext_resource type="Texture2D" uid="uid://dvmmh6ckk0neq" path="res://assets/game/water/water hyacinth.png" id="4_hyacinth"]
+[ext_resource type="Texture2D" uid="uid://58k4wapmmd7b" path="res://assets/game/water/obstacle1.png" id="5_obs1"]
+[ext_resource type="Texture2D" uid="uid://qytlwe1y54pq" path="res://assets/game/water/obstacle2.png" id="6_obs2"]
+[ext_resource type="Texture2D" uid="uid://dxgnwf87c7c7e" path="res://assets/game/water/obstacle3.png" id="7_obs3"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="8_font"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
+size = Vector2(1200, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_v"]
+size = Vector2(100, 700)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_net"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hya"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obs1"]
+radius = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obs2"]
+radius = 45.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obs3"]
+radius = 70.0
+
+[node name="MinigameHyacinth" type="Node2D" unique_id=1267092456]
+script = ExtResource("1_script")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=5742352]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1398891757]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_bg")
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=937235096]
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=33506796]
+position = Vector2(0, -374)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=2009470655]
+position = Vector2(0, 374)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=632395997]
+position = Vector2(-626, 0)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1361667643]
+position = Vector2(626, 0)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="Net1" type="Area2D" parent="." unique_id=1794119974 groups=["net"]]
+position = Vector2(-400, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Net1" unique_id=935389466]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_net")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net1" unique_id=506902898]
+shape = SubResource("CircleShape2D_net")
+
+[node name="Net2" type="Area2D" parent="." unique_id=832398025 groups=["net"]]
+position = Vector2(400, -200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Net2" unique_id=1307383742]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_net")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net2" unique_id=883842110]
+shape = SubResource("CircleShape2D_net")
+
+[node name="Net3" type="Area2D" parent="." unique_id=554055389 groups=["net"]]
+position = Vector2(-400, 200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Net3" unique_id=1511069415]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_net")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net3" unique_id=1137204160]
+shape = SubResource("CircleShape2D_net")
+
+[node name="Net4" type="Area2D" parent="." unique_id=1285805685 groups=["net"]]
+position = Vector2(400, 200)
+
+[node name="Sprite2D" type="Sprite2D" parent="Net4" unique_id=1869809932]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_net")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net4" unique_id=1714924136]
+shape = SubResource("CircleShape2D_net")
+
+[node name="Net5" type="Area2D" parent="." unique_id=420918427 groups=["net"]]
+position = Vector2(0, -250)
+
+[node name="Sprite2D" type="Sprite2D" parent="Net5" unique_id=330643342]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_net")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Net5" unique_id=1761094581]
+shape = SubResource("CircleShape2D_net")
+
+[node name="Hyacinth1" type="RigidBody2D" parent="." unique_id=848269541 groups=["hyacinth"]]
+position = Vector2(-50, -50)
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Hyacinth1" unique_id=2027733092]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_hyacinth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hyacinth1" unique_id=742235324]
+shape = SubResource("CircleShape2D_hya")
+
+[node name="Hyacinth2" type="RigidBody2D" parent="." unique_id=1100038924 groups=["hyacinth"]]
+position = Vector2(50, -50)
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Hyacinth2" unique_id=1185977122]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_hyacinth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hyacinth2" unique_id=1864770362]
+shape = SubResource("CircleShape2D_hya")
+
+[node name="Hyacinth3" type="RigidBody2D" parent="." unique_id=1242115705 groups=["hyacinth"]]
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Hyacinth3" unique_id=844235714]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_hyacinth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hyacinth3" unique_id=1666895199]
+shape = SubResource("CircleShape2D_hya")
+
+[node name="Hyacinth4" type="RigidBody2D" parent="." unique_id=1792447640 groups=["hyacinth"]]
+position = Vector2(-50, 50)
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Hyacinth4" unique_id=1976609210]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_hyacinth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hyacinth4" unique_id=2110938019]
+shape = SubResource("CircleShape2D_hya")
+
+[node name="Hyacinth5" type="RigidBody2D" parent="." unique_id=288449281 groups=["hyacinth"]]
+position = Vector2(50, 50)
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Hyacinth5" unique_id=2045852087]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_hyacinth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hyacinth5" unique_id=405892931]
+shape = SubResource("CircleShape2D_hya")
+
+[node name="Obs1" type="StaticBody2D" parent="." unique_id=70237954]
+position = Vector2(-200, -100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs1" unique_id=1341418956]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_obs1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs1" unique_id=1666269309]
+shape = SubResource("CircleShape2D_obs1")
+
+[node name="Obs8" type="StaticBody2D" parent="." unique_id=1975400618]
+position = Vector2(-399.64542, -105.51514)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs8" unique_id=631800829]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_obs1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs8" unique_id=972015987]
+shape = SubResource("CircleShape2D_obs1")
+
+[node name="Obs2" type="StaticBody2D" parent="." unique_id=747985262]
+position = Vector2(200, -100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs2" unique_id=1034680086]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_obs2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs2" unique_id=286048580]
+shape = SubResource("CircleShape2D_obs2")
+
+[node name="Obs3" type="StaticBody2D" parent="." unique_id=2037192024]
+position = Vector2(-320.584, 109.70758)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs3" unique_id=507479514]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_obs3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs3" unique_id=1167012501]
+shape = SubResource("CircleShape2D_obs3")
+
+[node name="Obs9" type="StaticBody2D" parent="." unique_id=1846651396]
+position = Vector2(199.17151, -212.39445)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs9" unique_id=561393810]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_obs3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs9" unique_id=1705336250]
+shape = SubResource("CircleShape2D_obs3")
+
+[node name="Obs4" type="StaticBody2D" parent="." unique_id=1633962460]
+position = Vector2(200, 100)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs4" unique_id=1147917796]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_obs1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs4" unique_id=1814043012]
+shape = SubResource("CircleShape2D_obs1")
+
+[node name="Obs7" type="StaticBody2D" parent="." unique_id=320558775]
+position = Vector2(-4.338379, -158.22275)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs7" unique_id=136761746]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_obs1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs7" unique_id=139904186]
+shape = SubResource("CircleShape2D_obs1")
+
+[node name="Obs5" type="StaticBody2D" parent="." unique_id=1941967628]
+position = Vector2(0, 150)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs5" unique_id=959372450]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_obs2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs5" unique_id=2003684075]
+shape = SubResource("CircleShape2D_obs2")
+
+[node name="Obs6" type="StaticBody2D" parent="." unique_id=679746296]
+position = Vector2(414.3943, 92.13837)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obs6" unique_id=1686814768]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_obs2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obs6" unique_id=1912253787]
+shape = SubResource("CircleShape2D_obs2")
+
+[node name="PopupLayer" type="CanvasLayer" parent="." unique_id=1797139568]
+layer = 100
+visible = false
+
+[node name="Panel" type="Panel" parent="PopupLayer" unique_id=1872893531]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="PopupLayer/Panel" unique_id=739800044]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 50.0
+offset_bottom = 120.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 48
+text = "성공!"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="PopupLayer/Panel" unique_id=1103048701]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 24
+text = "부레옥잠을 모두 채집망에 안전하게 넣었습니다!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ReturnBtn" type="Button" parent="PopupLayer/Panel" unique_id=404142260]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 28
+text = "마을로 돌아가기"

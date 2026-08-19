@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://cfarm0000001"]
+
+[ext_resource type="Script" uid="uid://b7dssjg201agv" path="res://scripts/Farm.gd" id="1_farm"]
+[ext_resource type="Texture2D" uid="uid://c6giv64eop0em" path="res://assets/maps/map4.png" id="2_map"]
+[ext_resource type="Script" uid="uid://bw8063sb1m1bi" path="res://scripts/Portal.gd" id="3_portal"]
+[ext_resource type="PackedScene" uid="uid://dy2dmmaacfeqq" path="res://scenes/Player.tscn" id="4_player"]
+[ext_resource type="Texture2D" uid="uid://p2uubpywckdk" path="res://assets/npc/farmer.png" id="5_farmer"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="6_font"]
+[ext_resource type="Texture2D" uid="uid://dscdght86rr2r" path="res://assets/game/bean/bean.png" id="7_bean"]
+[ext_resource type="Texture2D" uid="uid://57dcr1moty08" path="res://assets/game/corn/corn.png" id="8_corn"]
+[ext_resource type="Texture2D" uid="uid://ddemlnyxvqvkp" path="res://assets/game/tomato/tomato-icon1.png" id="9_tomato"]
+[ext_resource type="Texture2D" uid="uid://rrmppvbsx0mo" path="res://assets/game/get1.png" id="10_get1"]
+[ext_resource type="Texture2D" uid="uid://uvfvsqgqjxtx" path="res://assets/game/back.png" id="11_back"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_portal"]
+size = Vector2(80, 107)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npc"]
+size = Vector2(129, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plant"]
+size = Vector2(88.99999, 94.6463)
+
+[node name="Farm" type="Node2D" unique_id=1320837622]
+script = ExtResource("1_farm")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=524249370]
+texture = ExtResource("2_map")
+
+[node name="Portals" type="Node2D" parent="." unique_id=1873713385]
+
+[node name="PortalToPlaza" type="Area2D" parent="Portals" unique_id=154927468]
+position = Vector2(-960, 0)
+script = ExtResource("3_portal")
+target_scene = "res://scenes/MainPlaza.tscn"
+target_spawn_marker = "FromFarm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/PortalToPlaza" unique_id=1774963129]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=2109770278]
+
+[node name="Default" type="Marker2D" parent="SpawnPoints" unique_id=1227734878]
+
+[node name="FromPlaza" type="Marker2D" parent="SpawnPoints" unique_id=761378949]
+position = Vector2(-866, 14)
+
+[node name="FarmerNPC" type="Area2D" parent="." unique_id=1908067008]
+position = Vector2(312.4618, -180.21011)
+
+[node name="Sprite2D" type="Sprite2D" parent="FarmerNPC" unique_id=909228716]
+position = Vector2(-3.461792, -44.78988)
+scale = Vector2(0.27365154, 0.27365154)
+texture = ExtResource("5_farmer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FarmerNPC" unique_id=459492187]
+position = Vector2(-3.961792, -28.789886)
+shape = SubResource("RectangleShape2D_npc")
+
+[node name="QuestMarker" type="Label" parent="FarmerNPC" unique_id=175820069]
+offset_left = -23.461792
+offset_top = -167.78989
+offset_right = 26.538208
+offset_bottom = -87.78989
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 60
+text = "!"
+horizontal_alignment = 1
+
+[node name="BeanPlant" type="Area2D" parent="." unique_id=643086235]
+position = Vector2(777.6522, -75.17035)
+
+[node name="Sprite2D" type="Sprite2D" parent="BeanPlant" unique_id=1819575044]
+position = Vector2(2.3477762, -8.420561)
+scale = Vector2(0.3551395, 0.35513946)
+texture = ExtResource("7_bean")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BeanPlant" unique_id=786721829]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_plant")
+
+[node name="QuestMarker" type="Label" parent="BeanPlant" unique_id=2078159626]
+offset_left = -25.0
+offset_top = -119.0
+offset_right = 25.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 60
+text = "!"
+horizontal_alignment = 1
+
+[node name="CornPlant" type="Area2D" parent="." unique_id=1747987967]
+position = Vector2(-276.604, -147.27289)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornPlant" unique_id=992012177]
+position = Vector2(-7.3959846, -25.727116)
+scale = Vector2(0.36604, 0.36603996)
+texture = ExtResource("8_corn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornPlant" unique_id=1670888733]
+position = Vector2(-9.395996, -6.0502625)
+shape = SubResource("RectangleShape2D_plant")
+
+[node name="QuestMarker" type="Label" parent="CornPlant" unique_id=657921809]
+offset_left = -34.395996
+offset_top = -130.72711
+offset_right = 15.604004
+offset_bottom = -51.72711
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 60
+text = "!"
+horizontal_alignment = 1
+
+[node name="TomatoPlant" type="Area2D" parent="." unique_id=1224169548]
+position = Vector2(-223.98865, 234.67578)
+
+[node name="Sprite2D" type="Sprite2D" parent="TomatoPlant" unique_id=1182475943]
+position = Vector2(3.4886475, -16.17099)
+scale = Vector2(0.6219511, 0.6219511)
+texture = ExtResource("9_tomato")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TomatoPlant" unique_id=857153417]
+position = Vector2(17.488647, -32.67578)
+shape = SubResource("RectangleShape2D_plant")
+
+[node name="QuestMarker" type="Label" parent="TomatoPlant" unique_id=119744237]
+offset_left = -21.0
+offset_top = -118.0
+offset_right = 29.0
+offset_bottom = -39.0
+theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 60
+text = "!"
+horizontal_alignment = 1
+
+[node name="RewardPopup" type="CanvasLayer" parent="." unique_id=602199922]
+layer = 120
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="RewardPopup" unique_id=1212289706]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="RewardCard" type="TextureRect" parent="RewardPopup" unique_id=1538532529]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.58400005
+anchor_right = 0.5
+anchor_bottom = 0.58400005
+offset_left = -252.0
+offset_top = -149.43204
+offset_right = 248.0
+offset_bottom = 179.56796
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GetBanner" type="TextureRect" parent="RewardPopup" unique_id=764721677]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_get1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="RewardPopup" unique_id=755866101]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.90700006
+anchor_right = 0.5
+anchor_bottom = 0.90700006
+offset_left = -191.0
+offset_top = -93.73602
+offset_right = 185.0
+offset_bottom = 94.26398
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("11_back")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Colliders" type="Node2D" parent="." unique_id=2069014391]
+
+[node name="TopWall" type="StaticBody2D" parent="Colliders" unique_id=1459418045]
+position = Vector2(0, -600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/TopWall" unique_id=1326333094]
+rotation = 1.5708
+scale = Vector2(1, 6)
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="BottomWall" type="StaticBody2D" parent="Colliders" unique_id=1783886382]
+position = Vector2(0, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/BottomWall" unique_id=1595316761]
+rotation = 1.5708
+scale = Vector2(1, 6)
+shape = SubResource("RectangleShape2D_portal")
+
+[node name="Player" parent="." unique_id=2006863890 instance=ExtResource("4_player")]
+position = Vector2(-865.11676, 14.470642)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=141349862]
+limit_left = -960
+limit_top = -540
+limit_right = 960
+limit_bottom = 540

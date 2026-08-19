@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://nf23koark7xj"]
+
+[ext_resource type="Script" uid="uid://h4mwe28bm314" path="res://scripts/MinigameCattail.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b1preilucc14h" path="res://assets/game/flag/flag_bg.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://bojry23ibukre" path="res://assets/game/flag/flag1.png" id="3_flag"]
+[ext_resource type="Texture2D" uid="uid://cv2orjxr601ny" path="res://assets/game/flag/score,time.png" id="4_scoretime"]
+[ext_resource type="Texture2D" uid="uid://dd67dtd8xustc" path="res://assets/game/flag/flag_basket.png" id="5_basket"]
+[ext_resource type="Texture2D" uid="uid://bmdtpfv3qwwgc" path="res://assets/game/flag/fan.png" id="6_fan"]
+[ext_resource type="Texture2D" uid="uid://c5yfvurky3n18" path="res://assets/game/flag/wind.png" id="7_wind"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="8_font"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_basket"]
+size = Vector2(160, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_water"]
+size = Vector2(484, 23)
+
+[node name="MinigameCattail" type="Node2D" unique_id=661925208]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=393393371]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="IntroSprite" type="Sprite2D" parent="." unique_id=1712446003]
+position = Vector2(583.7668, 427.9295)
+scale = Vector2(0.43641618, 0.40247872)
+texture = ExtResource("3_flag")
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=377894787]
+
+[node name="Control" type="Control" parent="UILayer" unique_id=838975980]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -0.00012207031
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="UILayer/Control"]
+layout_mode = 1
+mouse_filter = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 260.0
+offset_bottom = 110.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="InfoLabel" type="Label" parent="UILayer/Control"]
+layout_mode = 1
+mouse_filter = 2
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 250.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 24
+text = "제한시간: 30 초
+목표: 0 / 5"
+
+[node name="BasketTarget" type="Area2D" parent="." unique_id=1867163389]
+position = Vector2(576, 580)
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BasketTarget" unique_id=36955336]
+position = Vector2(-3.0000305, 36)
+scale = Vector2(0.15918371, 0.14782016)
+texture = ExtResource("5_basket")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasketTarget" unique_id=125220044]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_basket")
+
+[node name="WaterAreas" type="Node2D" parent="." unique_id=25426261]
+
+[node name="WaterLeft" type="Area2D" parent="WaterAreas" unique_id=917661917 groups=["water_area"]]
+position = Vector2(225, 600)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/WaterLeft" unique_id=1249045895]
+position = Vector2(17, 58.5)
+shape = SubResource("RectangleShape2D_water")
+
+[node name="WaterRight" type="Area2D" parent="WaterAreas" unique_id=1269868094 groups=["water_area"]]
+position = Vector2(927, 600)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterAreas/WaterRight" unique_id=180803270]
+position = Vector2(-18, 59)
+shape = SubResource("RectangleShape2D_water")
+
+[node name="WindManager" type="Node2D" parent="." unique_id=1217207505]
+z_index = 10
+
+[node name="Line2D" type="Line2D" parent="WindManager" unique_id=1479554211]
+width = 5.0
+default_color = Color(1, 1, 1, 0.5)
+
+[node name="FanSprite" type="Sprite2D" parent="WindManager" unique_id=786591018]
+texture = ExtResource("6_fan")
+
+[node name="PopupLayer" type="CanvasLayer" parent="." unique_id=1652372387]
+layer = 100
+visible = false
+
+[node name="Panel" type="Panel" parent="PopupLayer" unique_id=287137814]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+
+[node name="Title" type="Label" parent="PopupLayer/Panel" unique_id=1696476920]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 48
+text = "성공!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="Label" parent="PopupLayer/Panel" unique_id=1856944986]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 120.0
+offset_right = -20.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 28
+text = "메시지"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReturnBtn" type="Button" parent="PopupLayer/Panel" unique_id=1054381932]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -80.0
+offset_right = 100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 28
+text = "확인"

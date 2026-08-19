@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://lbfdgly70nq5"]
+
+[ext_resource type="Script" uid="uid://bh4rwu4x5ox0r" path="res://scripts/MinigameBean.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://o0h4eg1eh870" path="res://assets/game/bean/gameboard.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://b7m0hra415dkx" path="res://assets/game/bean/bean_bg.png" id="2_bg_main"]
+[ext_resource type="Texture2D" uid="uid://brtuedm12rhkr" path="res://assets/game/bean/start.png" id="3_start"]
+[ext_resource type="Texture2D" uid="uid://bsfi1itjooebx" path="res://assets/game/bean/end.png" id="4_end"]
+[ext_resource type="Texture2D" uid="uid://7w34sqt4pmkl" path="res://assets/game/bean/tile1-1.png" id="5_tile1"]
+[ext_resource type="Texture2D" uid="uid://dhi1l5y31doqp" path="res://assets/game/bean/tile2-4.png" id="6_tile2"]
+[ext_resource type="Texture2D" uid="uid://beyp8kvye0tjn" path="res://assets/game/bean/tile3-2.png" id="7_tile3"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="11_font"]
+[ext_resource type="Texture2D" uid="uid://cxwyo0dii13du" path="res://assets/game/bean/tileboard.png" id="12_tileboard"]
+[ext_resource type="Script" uid="uid://chp5hp8p4tebn" path="res://scripts/GridVisualizer.gd" id="99_grid_vis"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_darkbtn"]
+bg_color = Color(0.2, 0.2, 0.2, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MinigameBean" type="Node2D" unique_id=1904684951]
+script = ExtResource("1_script")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1145567010]
+position = Vector2(579, 327.99997)
+scale = Vector2(0.41896802, 0.4244792)
+texture = ExtResource("2_bg_main")
+
+[node name="GameBoard" type="Sprite2D" parent="." unique_id=1334042582]
+position = Vector2(544.5, 312.0102)
+scale = Vector2(0.5472222, 0.55031)
+texture = ExtResource("2_bg")
+
+[node name="Grid" type="ColorRect" parent="." unique_id=1652776389]
+offset_left = 296.0
+offset_top = 61.0
+offset_right = 793.0
+offset_bottom = 557.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("99_grid_vis")
+
+[node name="StartPos" type="Sprite2D" parent="." unique_id=1938742454]
+position = Vector2(344.99997, 510)
+scale = Vector2(0.48204422, 0.48204422)
+texture = ExtResource("3_start")
+
+[node name="EndPos" type="Sprite2D" parent="." unique_id=691634215]
+position = Vector2(743.3125, 108.31247)
+scale = Vector2(0.48273444, 0.48273444)
+texture = ExtResource("4_end")
+
+[node name="Inventory" type="Node2D" parent="." unique_id=1471120705]
+z_index = 100
+position = Vector2(576, 580)
+scale = Vector2(0.55, 0.55)
+
+[node name="TileBoardBg" type="Sprite2D" parent="Inventory" unique_id=1364730136]
+position = Vector2(721.8181, -603.1818)
+scale = Vector2(1.3636363, 1.3830163)
+texture = ExtResource("12_tileboard")
+
+[node name="Tile1" type="Sprite2D" parent="Inventory" unique_id=1333074464]
+position = Vector2(714.5455, -794.54535)
+scale = Vector2(0.904068, 0.904068)
+texture = ExtResource("5_tile1")
+metadata/type = 1
+metadata/source = true
+
+[node name="Tile2" type="Sprite2D" parent="Inventory" unique_id=1742654696]
+position = Vector2(714.75, -632.5227)
+scale = Vector2(0.94198895, 0.94198895)
+texture = ExtResource("6_tile2")
+metadata/type = 2
+metadata/source = true
+
+[node name="Tile3" type="Sprite2D" parent="Inventory" unique_id=2060709839]
+position = Vector2(730.20447, -422.5227)
+scale = Vector2(0.93194413, 0.93194413)
+texture = ExtResource("7_tile3")
+metadata/type = 3
+metadata/source = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1131245040]
+
+[node name="CheckButton" type="Button" parent="UI" unique_id=1499638116]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -146.0
+offset_right = -45.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("11_font")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_darkbtn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_darkbtn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_darkbtn")
+text = "물 주기 (확인)"
+
+[node name="ResetButton" type="Button" parent="UI" unique_id=1983360374]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 240.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("11_font")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_darkbtn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_darkbtn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_darkbtn")
+text = "초기화"

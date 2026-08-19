@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://dsuq3s0miniga"]
+
+[ext_resource type="Script" uid="uid://x160yabub064" path="res://scripts/MinigameBalsam.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://vxaayc5ar6il" path="res://assets/game/bong/bong_bg.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://3s1jevxe5jna" path="res://assets/game/bong/launcher.png" id="3_launcher"]
+[ext_resource type="Texture2D" uid="uid://ba36lbq0x432d" path="res://assets/game/bong/stay.png" id="4_stay"]
+[ext_resource type="Texture2D" uid="uid://dhb1jjap0mtkr" path="res://assets/game/bong/bong_basket.png" id="5_basket"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="6_font"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1148, 36)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drag"]
+radius = 35.69314
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_basket_rim"]
+size = Vector2(14, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_basket_bottom"]
+size = Vector2(154, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_goal"]
+size = Vector2(123, 20)
+
+[node name="MinigameBalsam" type="Node2D" unique_id=2058260136]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=987654311]
+z_index = -10
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1118158233]
+position = Vector2(558, 614)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=736723243]
+position = Vector2(19, 15)
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="LauncherBase" type="Node2D" parent="." unique_id=1822600383]
+position = Vector2(140, 333)
+
+[node name="BaseSprite" type="Sprite2D" parent="LauncherBase" unique_id=1619905813]
+position = Vector2(0, 120)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_launcher")
+
+[node name="TrajectoryLine" type="Line2D" parent="LauncherBase" unique_id=852668323]
+width = 8.0
+default_color = Color(1, 1, 1, 0.5)
+
+[node name="StaySprite" type="Sprite2D" parent="LauncherBase" unique_id=345728236]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_stay")
+hframes = 6
+
+[node name="DragArea" type="Area2D" parent="LauncherBase" unique_id=2085378077]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LauncherBase/DragArea" unique_id=1998042312]
+shape = SubResource("CircleShape2D_drag")
+
+[node name="Basket" type="Node2D" parent="." unique_id=539077446]
+position = Vector2(1500, 800)
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket" unique_id=564790285]
+position = Vector2(-520, -358.99997)
+scale = Vector2(0.114843756, 0.15065105)
+texture = ExtResource("5_basket")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Basket" unique_id=1411830638]
+collision_mask = 2
+
+[node name="LeftRim" type="CollisionShape2D" parent="Basket/StaticBody2D" unique_id=1008132257]
+position = Vector2(-590, -358.5)
+shape = SubResource("RectangleShape2D_basket_rim")
+
+[node name="RightRim" type="CollisionShape2D" parent="Basket/StaticBody2D" unique_id=658042191]
+position = Vector2(-452, -358)
+shape = SubResource("RectangleShape2D_basket_rim")
+
+[node name="Bottom" type="CollisionShape2D" parent="Basket/StaticBody2D" unique_id=1711598791]
+position = Vector2(-523, -335)
+shape = SubResource("RectangleShape2D_basket_bottom")
+
+[node name="GoalZone" type="Area2D" parent="Basket" unique_id=1705436966]
+position = Vector2(47, 80)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/GoalZone" unique_id=734358353]
+position = Vector2(-567.5, -458)
+shape = SubResource("RectangleShape2D_goal")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2120591981]
+layer = 5
+
+[node name="RulesPopup" type="ColorRect" parent="UI" unique_id=187513326]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 450.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.15, 0.15, 1)
+
+[node name="RulesText" type="Label" parent="UI/RulesPopup" unique_id=381628172]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 3.0
+offset_right = -2.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 32
+text = "[봉선화 씨앗 쏘기 미션!]
+
+🎯 발사대를 당겼다 놓아서 씨앗을 쏘세요.
+🧺 각 라운드마다 바구니에 2번 골인시켜야 합니다.
+
+총 2라운드를 모두 통과하면 미션 성공입니다!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="UI/RulesPopup" unique_id=987654329]
+self_modulate = Color(0.3, 0.8, 0.2, 1)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -140.0
+offset_right = 150.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 42
+text = "게임 시작"
+
+[node name="InstructionLabel" type="Label" parent="UI" unique_id=1645482444]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 50.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+vertical_alignment = 1

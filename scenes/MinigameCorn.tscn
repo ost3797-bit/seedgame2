@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://83bmna8ryrqw"]
+
+[ext_resource type="Script" uid="uid://cn57y1vryql3a" path="res://scripts/MinigameCorn.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cd5tjfwjpb03a" path="res://assets/game/corn/cornboard.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://cdph6bktsnajj" path="res://assets/game/corn/corn1.png" id="3_corn1"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="11_font"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_corn"]
+size = Vector2(100, 100)
+
+[node name="MinigameCorn" type="Node2D" unique_id=200103775]
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1604804539]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+
+[node name="CornSpots" type="Node2D" parent="." unique_id=774180056]
+
+[node name="CornHole_0" type="Area2D" parent="CornSpots" unique_id=1773471784]
+position = Vector2(505.357, 170)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_0" unique_id=1536712622]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_0" unique_id=609901958]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_1" type="Area2D" parent="CornSpots" unique_id=1782670169]
+position = Vector2(576, 170.913)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_1" unique_id=15494402]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_1" unique_id=1275475174]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_2" type="Area2D" parent="CornSpots" unique_id=972678403]
+position = Vector2(649.551, 171)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_2" unique_id=1056638752]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_2" unique_id=697070294]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_3" type="Area2D" parent="CornSpots" unique_id=891632976]
+position = Vector2(504, 248)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_3" unique_id=217927738]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_3" unique_id=79490047]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_4" type="Area2D" parent="CornSpots" unique_id=442544533]
+position = Vector2(575.633, 248)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_4" unique_id=1848310810]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_4" unique_id=1202612821]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_5" type="Area2D" parent="CornSpots" unique_id=1151515177]
+position = Vector2(648.838, 248)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_5" unique_id=1183251345]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_5" unique_id=1589084120]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_6" type="Area2D" parent="CornSpots" unique_id=945057877]
+position = Vector2(504, 327.572)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_6" unique_id=2121134850]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_6" unique_id=1093481486]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_7" type="Area2D" parent="CornSpots" unique_id=1185298084]
+position = Vector2(576, 327.572)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_7" unique_id=524198684]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_7" unique_id=1210340060]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_8" type="Area2D" parent="CornSpots" unique_id=1236708216]
+position = Vector2(648.8384, 327.5721)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_8" unique_id=1905737383]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_8" unique_id=387965785]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_9" type="Area2D" parent="CornSpots" unique_id=812444093]
+position = Vector2(504, 404)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_9" unique_id=1011992837]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_9" unique_id=1634214040]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_10" type="Area2D" parent="CornSpots" unique_id=795914832]
+position = Vector2(576, 404)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_10" unique_id=430357604]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_10" unique_id=101015661]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_11" type="Area2D" parent="CornSpots" unique_id=2110772466]
+position = Vector2(648.838, 404)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_11" unique_id=48442444]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_11" unique_id=6830571]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_12" type="Area2D" parent="CornSpots" unique_id=912779255]
+position = Vector2(504, 486)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_12" unique_id=557073500]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_12" unique_id=1741090971]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_13" type="Area2D" parent="CornSpots" unique_id=480062856]
+position = Vector2(576, 486)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_13" unique_id=1843682243]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_13" unique_id=168703501]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_14" type="Area2D" parent="CornSpots" unique_id=1030728672]
+position = Vector2(647.374, 486)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_14" unique_id=1450249349]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_14" unique_id=298592384]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_15" type="Area2D" parent="CornSpots" unique_id=867032097]
+position = Vector2(504, 564)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_15" unique_id=1531806986]
+position = Vector2(1.5066528, -1.375)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_15" unique_id=1719494592]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_16" type="Area2D" parent="CornSpots" unique_id=1389692793]
+position = Vector2(576, 564)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_16" unique_id=978726390]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_16" unique_id=233300200]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="CornHole_17" type="Area2D" parent="CornSpots" unique_id=888487441]
+position = Vector2(647.374, 563)
+scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="CornSpots/CornHole_17" unique_id=1273952477]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_corn1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CornSpots/CornHole_17" unique_id=1826460922]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("RectangleShape2D_corn")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=646040226]
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=588912330]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 400.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_font")
+theme_override_font_sizes/font_size = 48
+text = "수확량: 0 / 18"
+
+[node name="BackButton" type="Button" parent="UI" unique_id=956887949]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("11_font")
+theme_override_font_sizes/font_size = 32
+text = "돌아가기"

@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://maplemini1"]
+
+[ext_resource type="Script" uid="uid://dcnn0vnt707q2" path="res://scripts/MinigameMaple.gd" id="1_m"]
+[ext_resource type="Texture2D" uid="uid://hkf6u0ng0a58" path="res://assets/game/maple/maple_bg.png" id="2_m"]
+[ext_resource type="Texture2D" uid="uid://03su5x4pio6i" path="res://assets/game/maple/maple_basket.png" id="3_m"]
+[ext_resource type="Texture2D" uid="uid://cgqmwqleyx8qt" path="res://assets/game/maple/fall_seed2.png" id="4_m"]
+[ext_resource type="FontFile" uid="uid://1goq5aqmu5q" path="res://fonts/Cafe24Ssurround-v2.0.ttf" id="5_m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_basket"]
+size = Vector2(194.0694, 70.03247)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_seed"]
+radius = 40.0
+
+[node name="MinigameMaple" type="Node2D" unique_id=1001]
+script = ExtResource("1_m")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1002]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1003]
+position = Vector2(0.0001219511, 0)
+scale = Vector2(0.41795063, 0.42031252)
+texture = ExtResource("2_m")
+
+[node name="Basket" type="Area2D" parent="." unique_id=1004]
+position = Vector2(0.2020874, 183.9617)
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket" unique_id=1005]
+position = Vector2(-0.2020874, 20.0383)
+scale = Vector2(0.20060198, 0.19452652)
+texture = ExtResource("3_m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket" unique_id=1006]
+position = Vector2(4.7979126, 33.0383)
+shape = SubResource("RectangleShape2D_basket")
+
+[node name="SeedTemplate" type="Area2D" parent="." unique_id=1007]
+visible = false
+position = Vector2(0, -600)
+
+[node name="Sprite2D" type="Sprite2D" parent="SeedTemplate" unique_id=1008]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("4_m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeedTemplate" unique_id=1009]
+shape = SubResource("CircleShape2D_seed")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1010]
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=1011]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 300.0
+offset_bottom = 100.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_m")
+theme_override_font_sizes/font_size = 48
+text = "씨앗 수집: 0 / 15"
+
+[node name="TimeLabel" type="Label" parent="UI" unique_id=1012]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_m")
+theme_override_font_sizes/font_size = 48
+text = "남은 시간: 30초"
+horizontal_alignment = 2
+
+[node name="PopupLayer" type="CanvasLayer" parent="." unique_id=1013]
+layer = 100
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PopupLayer" unique_id=1014]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="Panel" type="Panel" parent="PopupLayer" unique_id=1015]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="PopupLayer/Panel" unique_id=1016]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_m")
+theme_override_font_sizes/font_size = 48
+text = "결과"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="PopupLayer/Panel" unique_id=1017]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_m")
+theme_override_font_sizes/font_size = 24
+text = "내용"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="RetryBtn" type="Button" parent="PopupLayer/Panel" unique_id=1018]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_m")
+theme_override_font_sizes/font_size = 28
+text = "다시 하기"
