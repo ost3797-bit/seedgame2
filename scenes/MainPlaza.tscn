@@ -114,3 +114,30 @@ limit_right = 960
 limit_bottom = 540
 
 [node name="SeedHouseUI" parent="." unique_id=987654325 instance=ExtResource("8_seedhouseui")]
+visible = false
+
+[node name="obstacle" type="StaticBody2D" parent="." unique_id=161732105]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacle" unique_id=341698167]
+position = Vector2(-319, 115)
+polygon = PackedVector2Array(465, -441, 462, -209, 551, -209, 582, -279, 836, -279, 834, -433, 964, -430, 959, -482, 1068, -480, 1068, -172, 1278, -174, 1280, -656, 403, -652, 397, -441)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="obstacle" unique_id=2044101186]
+position = Vector2(-650.40625, -198.5955)
+scale = Vector2(0.2670849, 0.48063016)
+polygon = PackedVector2Array(-1166.6467, 250.91122, -1155.4143, -716.5686, 2124.4414, -710.3268, 2188.0918, -246.35257, 1761.2611, -134.00009, 1933.491, 167.68715, 1783.7258, 240.50821, 1611.496, 84.46307, 1600.2637, -117.355255, 1282.0127, -181.85391, 1248.3156, -406.55893, 170.00684, -406.55893, -331.7063, -402.39774, -331.7063, 244.66942)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="obstacle" unique_id=245063025]
+position = Vector2(-381, 276)
+scale = Vector2(0.2670849, 0.48063016)
+polygon = PackedVector2Array(-2175.3381, 530.55334, -2156.6177, -478.53842, -542.89856, -478.53842, -524.17786, -355.7829, 108.57971, -349.5411, 127.300415, 43.692627, 1126.9824, 27.04779, 1115.7501, 545.1177)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="obstacle" unique_id=1430226768]
+position = Vector2(662, 279.00003)
+scale = Vector2(0.2670849, 0.48063016)
+polygon = PackedVector2Array(1104.5178, 545.11755, 1115.75, -463.9742, 378.15698, -463.9742, -1261.771, -480.61902, -1389.0714, -10.403076, -2040.5496, -6.2418213, -2051.782, 528.4728)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="obstacle" unique_id=1123595262]
+position = Vector2(934, -247.99991)
+scale = Vector2(0.2670849, 0.48063016)
+polygon = PackedVector2Array(-1437.7451, 384.9111, -1213.0974, 384.9111, -1205.6091, 66.57904, -1426.5127, 60.33725)

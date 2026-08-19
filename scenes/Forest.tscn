@@ -190,3 +190,28 @@ grow_vertical = 0
 texture_normal = ExtResource("11_back")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="obstacle" type="StaticBody2D" parent="." unique_id=706335413]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacle" unique_id=1643240708]
+polygon = PackedVector2Array(-769, 561, -766, 151, -865, 148, -860, -290, -756, -287, -758, 29, -595, 37, -556, 143, -655, 208, -650, 439, -546, 519, -429, 519, -426, 563, -229, 561, -97, 485, -100, 377, -30, 361, -4, 239, -92, 60, -152, 55, -149, -62, -349, -59, -367, -438, -19, -443, -24, -669, 72, -669, 72, -768, -1372, -768, -1366, 761, -39, 763, -44, 673, -1105, 662, -1113, 442, -1196, 434, -1199, 258, -1126, 255, -1116, 341, -968, 359, -957, 574)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="obstacle" unique_id=421916174]
+position = Vector2(1455, 8)
+polygon = PackedVector2Array(-1388, -458, -1383, -777, -94, -777, -90, 767, -1346, 761, -1340, 667, -641, 672, -601, 413, -618, 316, -684, 276, -669, 170, -615, 125, -601, 33, -555, -4, -561, -109, -513, -112, -504, -12, -424, -4, -353, -49, -124, -49, -127, -169, -358, -163, -353, -241, -578, -221, -621, -306, -595, -417, -781, -469)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="obstacle" unique_id=103320234]
+position = Vector2(1455, 8)
+polygon = PackedVector2Array(-1734, -363, -1719, -183, -1662, -183, -1642, -163, -1537, -169, -1542, -254, -1494, -274, -1497, -351)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="obstacle" unique_id=665207723]
+position = Vector2(1455, 8)
+polygon = PackedVector2Array(-1306, -366, -1297, -175, -1117, -152, -1037, -269, -1049, -351)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="obstacle" unique_id=1812021593]
+position = Vector2(1455, 8)
+polygon = PackedVector2Array(-1269, 396, -1077, 325, -786, 330, -766, -132, -921, -138, -938, -69, -1314, -55, -1314, 71, -1374, 131, -1374, 302)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="obstacle" unique_id=115004855]
+position = Vector2(1455, 8)
+polygon = PackedVector2Array(-1046, 487, -863, 576, -821, 533, -1018, 416)

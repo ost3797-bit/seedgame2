@@ -15,10 +15,10 @@
 size = Vector2(400, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npc"]
-size = Vector2(116.5, 123.5)
+size = Vector2(148, 129.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyacinth"]
-size = Vector2(64, 113)
+size = Vector2(90, 113)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cattail"]
 size = Vector2(80, 125)
@@ -54,8 +54,8 @@ position = Vector2(20.538145, -430.6365)
 scale = Vector2(0.8, 0.8)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1950892311]
-zoom = Vector2(0.9, 0.9)
 position = Vector2(1.2499999, 3.7499995)
+zoom = Vector2(0.9, 0.9)
 limit_left = -960
 limit_top = -540
 limit_right = 960
@@ -70,7 +70,7 @@ scale = Vector2(0.16170214, 0.17208122)
 texture = ExtResource("6_frog")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrogNPC" unique_id=947716680]
-position = Vector2(6.49292, -71.95337)
+position = Vector2(-9.25708, -74.95337)
 shape = SubResource("RectangleShape2D_npc")
 
 [node name="QuestMarker" type="Label" parent="FrogNPC" unique_id=1663386928]
@@ -95,7 +95,7 @@ scale = Vector2(0.5220714, 0.5146714)
 texture = ExtResource("7_hyacinth")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HyacinthPlant" unique_id=1956656137]
-position = Vector2(-7.616272, -45.900818)
+position = Vector2(-11.616272, -45.900818)
 shape = SubResource("RectangleShape2D_hyacinth")
 
 [node name="QuestMarker" type="Label" parent="HyacinthPlant" unique_id=1267127322]
@@ -190,3 +190,11 @@ offset_bottom = 94.264
 texture_normal = ExtResource("9_close")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="obstacle" type="StaticBody2D" parent="." unique_id=616657221]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="obstacle" unique_id=1981356161]
+polygon = PackedVector2Array(-959, -541, -28, -541, -56, -305, -500, -282, -541, -191, -554, -87, -609, -72, -596, 183, -503, 255, -645, 255, -645, 71, -679, 68, -689, 118, -822, 115, -868, 203, -863, 385, -741, 411, -627, 372, -474, 343, -464, 520, -422, 517, -391, 343, -54, 338, -46, 522, 16, 522, 24, 338, 452, 328, 504, 237, 566, 180, 595, 190, 628, 188, 636, 144, 667, 131, 805, 131, 797, -82, 719, -116, 623, -82, 621, 19, 582, 19, 558, -113, 426, -284, 130, -292, 76, -339, 78, -541, 958, -538, 963, 543, -956, 541)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="obstacle" unique_id=1595742130]
+polygon = PackedVector2Array(5, -222, -353, -210, -378, -241, -468, -200, -479, -15, -522, 16, -523, 114, -528, 169, -428, 260, -355, 241, 336, 240, 345, 273, 433, 254, 449, 202, 523, 139, 506, -62, 456, -99, 401, -128, 389, -186, 313, -222)
