@@ -27,6 +27,8 @@ var seed_instance = null
 var throb_tween: Tween
 
 func _ready():
+	if has_node("/root/AudioManager"):
+		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
 		get_node("/root/MobileUI").hide()
 		

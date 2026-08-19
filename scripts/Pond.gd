@@ -297,6 +297,8 @@ func _interact_frog() -> void:
 			GameManager.pond_hyacinth_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/water/water hyacinthcard.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			_update_quest_markers()
 			
@@ -323,6 +325,8 @@ func _interact_frog() -> void:
 			GameManager.pond_cattail_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/flag/flagcard.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			pending_final_dialogue = true
 			_update_quest_markers()

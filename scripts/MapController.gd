@@ -14,6 +14,10 @@ extends Node2D
 
 func _ready() -> void:
 	if has_node("/root/MobileUI"): MobileUI.show()
+	
+	if has_node("/root/AudioManager"):
+		AudioManager.play_main_bgm()
+		
 	# 자식 노드들이 모두 _ready()를 마친 직후 실행되도록 deferred 호출
 	call_deferred("_place_player_on_spawn_point")
 

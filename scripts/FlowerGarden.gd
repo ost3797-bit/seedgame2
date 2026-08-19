@@ -321,6 +321,8 @@ func _interact_cat() -> void:
 			GameManager.flowerbed_sorrel_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/bab/bobcard.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			_update_quest_markers()
 			
@@ -347,6 +349,8 @@ func _interact_cat() -> void:
 			GameManager.flowerbed_balsam_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/bong/bong_card.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			_update_quest_markers()
 			
@@ -372,6 +376,8 @@ func _interact_cat() -> void:
 			GameManager.flowerbed_dandelion_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/min/card_min.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			pending_final_dialogue = true
 			_update_quest_markers()

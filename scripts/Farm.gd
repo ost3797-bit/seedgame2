@@ -315,6 +315,8 @@ func _interact_farmer() -> void:
 			GameManager.farm_bean_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/bean/beancard.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			_update_quest_markers()
 			if seed_ui and seed_ui.has_method("update_counter"): seed_ui.update_counter()
@@ -338,6 +340,8 @@ func _interact_farmer() -> void:
 			GameManager.farm_corn_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/corn/corncard.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			_update_quest_markers()
 			if seed_ui and seed_ui.has_method("update_counter"): seed_ui.update_counter()
@@ -361,6 +365,8 @@ func _interact_farmer() -> void:
 			GameManager.farm_tomato_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/tomato/tomatocard.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			pending_final_dialogue = true
 			_update_quest_markers()

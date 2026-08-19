@@ -278,6 +278,8 @@ func _interact_squirrel() -> void:
 			GameManager.forest_maple_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/maple/maplecard.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			_update_quest_markers()
 			
@@ -304,6 +306,8 @@ func _interact_squirrel() -> void:
 			GameManager.forest_camellia_cleared = true
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/Camellia/camelliacard.png")
+			if has_node("/root/AudioManager"):
+				AudioManager.play_reward_sfx()
 			reward_popup.show()
 			pending_final_dialogue = true
 			_update_quest_markers()

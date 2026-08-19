@@ -26,6 +26,8 @@ var is_dragging := false
 var target_x := 0.0
 
 func _ready() -> void:
+	if has_node("/root/AudioManager"):
+		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
 		var m_ui = get_node("/root/MobileUI")
 		m_ui.hide()

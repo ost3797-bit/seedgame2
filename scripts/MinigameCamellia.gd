@@ -17,6 +17,8 @@ var current_clicks := 0
 var game_active := true
 
 func _ready() -> void:
+	if has_node("/root/AudioManager"):
+		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
 		get_node("/root/MobileUI").hide()
 		
@@ -49,6 +51,9 @@ func _on_fruit_input_event(viewport: Node, event: InputEvent, shape_idx: int) ->
 func _handle_hit(hit_pos: Vector2) -> void:
 	if not game_active: return
 	
+	if has_node("/root/AudioManager"):
+		AudioManager.play_hammer_sfx()
+		
 	_animate_hammer()
 	_spawn_boom(hit_pos)
 	_shake_fruit()

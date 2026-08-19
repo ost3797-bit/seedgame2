@@ -46,6 +46,8 @@ var start_popup: CanvasLayer
 var is_animating := false
 
 func _ready() -> void:
+	if has_node("/root/AudioManager"):
+		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
 		var m_ui = get_node("/root/MobileUI")
 		m_ui.hide()
@@ -228,6 +230,9 @@ func _process_matches(matches: Array) -> void:
 	gage_bar.texture = load(gage_path)
 	
 	# Explode
+	if matches.size() > 0 and has_node("/root/AudioManager"):
+		AudioManager.play_pop_sfx()
+		
 	for m in matches:
 		var s = grid_data[m.x][m.y]
 		if s:

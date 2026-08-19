@@ -26,6 +26,8 @@ var seed_scene = preload("res://scenes/CattailSeed.tscn")
 var spawn_timer: Timer
 
 func _ready() -> void:
+	if has_node("/root/AudioManager"):
+		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
 		get_node("/root/MobileUI").hide()
 		

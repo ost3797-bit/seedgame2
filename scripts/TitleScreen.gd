@@ -5,6 +5,10 @@ extends Control
 
 func _ready() -> void:
 	if has_node("/root/MobileUI"): MobileUI.hide()
+	
+	if has_node("/root/AudioManager"):
+		AudioManager.play_main_bgm()
+		
 	btn_start.pressed.connect(_on_start_pressed)
 	btn_continue.pressed.connect(_on_continue_pressed)
 

@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+AudioManager="*res://scripts/AudioManager.gd"
 GameManager="*res://scripts/GameManager.gd"
 MobileUI="*res://scenes/MobileUI.tscn"
 FullscreenUI="*res://scenes/FullscreenUI.tscn"

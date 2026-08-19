@@ -9,6 +9,10 @@ extends Control
 
 func _ready() -> void:
 	if has_node("/root/MobileUI"): MobileUI.hide()
+	
+	if has_node("/root/AudioManager"):
+		AudioManager.play_main_bgm()
+		
 	# 초기에는 선택된 캐릭터 1로 설정 (원하시는 대로 변경 가능)
 	GameManager.selected_character = 1
 	_update_selection_visuals()

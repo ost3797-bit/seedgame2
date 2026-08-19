@@ -62,6 +62,8 @@ var current_stage := 1
 var fixed_blocks := [] # Array of Vector2i for current stage
 
 func _ready() -> void:
+	if has_node("/root/AudioManager"):
+		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
 		var m_ui = get_node("/root/MobileUI")
 		m_ui.hide()
@@ -189,6 +191,9 @@ func _try_pickup(pos: Vector2) -> void:
 		var b = board[cell]
 		if b.get("is_fixed", false): return # Cannot pick up or rotate fixed blocks!
 		
+		if has_node("/root/AudioManager"):
+			AudioManager.play_wood_sfx()
+			
 		dragged_sprite = b.sprite
 		dragged_type = b.type
 		dragged_offset = dragged_sprite.global_position - pos
@@ -203,6 +208,10 @@ func _try_pickup(pos: Vector2) -> void:
 			if child.has_meta("type"):
 				if child.get_rect().has_point(child.to_local(pos)):
 					dragged_type = child.get_meta("type")
+					
+					if has_node("/root/AudioManager"):
+						AudioManager.play_wood_sfx()
+						
 					dragged_sprite = Sprite2D.new()
 					dragged_sprite.texture = tile_tex[dragged_type]
 					dragged_sprite.global_position = child.global_position
@@ -224,9 +233,13 @@ func _try_drop(pos: Vector2) -> void:
 		if dragged_sprite.rotation_degrees >= 360.0:
 			dragged_sprite.rotation_degrees -= 360.0
 		_place_on_board(cell, dragged_type, dragged_sprite)
+		if has_node("/root/AudioManager"):
+			AudioManager.play_wood_sfx()
 	else:
 		if _is_valid_cell(cell) and not board.has(cell):
 			_place_on_board(cell, dragged_type, dragged_sprite)
+			if has_node("/root/AudioManager"):
+				AudioManager.play_wood_sfx()
 		else:
 			dragged_sprite.queue_free()
 			

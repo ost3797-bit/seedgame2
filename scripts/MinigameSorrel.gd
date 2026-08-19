@@ -25,6 +25,8 @@ var current_round = 1
 var max_round = 5
 
 func _ready():
+	if has_node("/root/AudioManager"):
+		AudioManager.play_minigame_bgm()
 	# 모바일 UI(조이스틱) 숨기기
 	if has_node("/root/MobileUI"):
 		get_node("/root/MobileUI").hide()
