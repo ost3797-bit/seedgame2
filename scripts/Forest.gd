@@ -34,6 +34,7 @@ var chars_per_sec := 45.0
 var dialogue_queue: Array[String] = []
 var current_speaker := ""
 var _pending_accept := Callable()
+var pending_final_dialogue := false
 
 func _ready() -> void:
 	super._ready()
@@ -261,13 +262,13 @@ func _interact_squirrel() -> void:
 		_show_dialogue("다람쥐 나무꾼", [
 			"찍찍! 숲에 온 걸 환영해!\n나는 이 숲을 지키는 다람쥐 나무꾼이야.",
 			"가을이 오면 숲에는 수많은 씨앗들이 열리지.\n내가 모으는 걸 좀 도와줄래?",
-			"저기 있는 단풍나무에서 씨앗이 떨어지고 있어!\n바구니를 들고 떨어지는 씨앗들을 모두 받아줘!"
+			"저기 왼쪽 위 언덕에 있는 단풍나무에서 씨앗이 떨어지고 있어!\n바구니를 들고 떨어지는 씨앗들을 모두 받아줘!"
 		], func():
 			GameManager.maple_quest_state = 1
 			_update_quest_markers()
 		)
 	elif GameManager.maple_quest_state == 1:
-		_show_dialogue("다람쥐 나무꾼", ["단풍나무 밑으로 가서 떨어지는 씨앗을 받아와!"], func(): pass)
+		_show_dialogue("다람쥐 나무꾼", ["왼쪽 위 언덕에 있는 단풍나무 밑으로 가서 떨어지는 씨앗을 받아와!"], func(): pass)
 	elif GameManager.maple_quest_state == 2:
 		_show_dialogue("다람쥐 나무꾼", [
 			"우와! 단풍나무 씨앗을 다 받아냈구나!",
@@ -286,14 +287,14 @@ func _interact_squirrel() -> void:
 	elif GameManager.maple_quest_state == 3 and GameManager.camellia_quest_state == 0:
 		_show_dialogue("다람쥐 나무꾼", [
 			"이제 다음 나무로 가볼까?",
-			"오른쪽으로 가면 단단한 껍질을 가진 동백 열매가 떨어져 있을 거야.",
+			"오른쪽 아래 화단으로 가면 단단한 껍질을 가진 동백 열매가 떨어져 있을 거야.",
 			"내 망치를 빌려줄 테니, 껍질을 부수고 그 안의 까만 씨앗을 꺼내봐!"
 		], func():
 			GameManager.camellia_quest_state = 1
 			_update_quest_markers()
 		)
 	elif GameManager.camellia_quest_state == 1:
-		_show_dialogue("다람쥐 나무꾼", ["동백 열매를 찾아서 망치로 껍질을 부숴봐!"], func(): pass)
+		_show_dialogue("다람쥐 나무꾼", ["오른쪽 아래 화단에서 동백 열매를 찾아서 망치로 껍질을 부숴봐!"], func(): pass)
 	elif GameManager.camellia_quest_state == 2:
 		_show_dialogue("다람쥐 나무꾼", [
 			"대단해! 그렇게 단단한 껍질을 깨고 씨앗을 꺼내다니!",
@@ -304,13 +305,18 @@ func _interact_squirrel() -> void:
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/Camellia/camelliacard.png")
 			reward_popup.show()
+			pending_final_dialogue = true
 			_update_quest_markers()
 			
 			if seed_ui and seed_ui.has_method("update_counter"):
 				seed_ui.update_counter()
 		)
 	elif GameManager.camellia_quest_state == 3:
-		_show_dialogue("다람쥐 나무꾼", ["숲의 씨앗을 전부 다 찾았네! 너는 숲의 영웅이야!"], func(): pass)
+		_show_dialogue("다람쥐 나무꾼", [
+			"숲의 씨앗을 전부 다 찾았네! 너는 숲의 영웅이야!",
+			"수집한 씨앗들은 메인 광장의 '씨앗 보관함'에서 확인할 수 있어!",
+			"씨앗 보관함으로 돌아가서 도감을 꽉 채워봐!"
+		], func(): pass)
 
 func _show_dialogue(speaker: String, texts: Array, on_accept: Callable) -> void:
 	if texts.is_empty(): return
@@ -344,3 +350,11 @@ func _accept_dialogue() -> void:
 
 func _on_reward_close_pressed() -> void:
 	if reward_popup: reward_popup.hide()
+	
+	if pending_final_dialogue:
+		pending_final_dialogue = false
+		_show_dialogue("다람쥐 나무꾼", [
+			"숲의 씨앗을 전부 다 찾았네! 너는 숲의 영웅이야!",
+			"수집한 씨앗들은 메인 광장의 '씨앗 보관함'에서 확인할 수 있어!",
+			"씨앗 보관함으로 돌아가서 도감을 꽉 채워봐!"
+		], func(): pass)

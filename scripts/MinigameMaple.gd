@@ -131,7 +131,7 @@ func _update_ui() -> void:
 func _game_over(is_win: bool) -> void:
 	game_active = false
 	if is_win:
-		_show_popup("성공!", "단풍나무 씨앗을 모두 모았습니다!", true)
+		_show_popup("성공!", "단풍나무 씨앗을 모두 모았습니다!\n\n이제 다람쥐에게 돌아가세요!", true)
 	else:
 		_show_popup("시간 초과", "단풍나무 씨앗을 충분히 모으지 못했습니다.", false)
 

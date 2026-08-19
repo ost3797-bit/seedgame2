@@ -99,7 +99,7 @@ func _game_over() -> void:
 	var btn = popup_layer.get_node("Panel/ReturnBtn")
 	
 	title_label.text = "성공!"
-	desc_label.text = "단단한 동백 열매를 깨고 까만 씨앗을 얻었습니다!"
+	desc_label.text = "단단한 동백 열매를 깨고 까만 씨앗을 얻었습니다!\n\n이제 다람쥐에게 돌아가세요!"
 	
 	GameManager.camellia_quest_state = 2
 	btn.pressed.connect(_on_return_btn_pressed)
