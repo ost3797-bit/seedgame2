@@ -35,11 +35,13 @@ func _ready() -> void:
 func play_main_bgm() -> void:
 	if bgm_player.stream != main_bgm:
 		bgm_player.stream = main_bgm
+		bgm_player.volume_db = -3.5 # Reduce volume by ~30%
 		bgm_player.play()
 
 func play_minigame_bgm() -> void:
 	if bgm_player.stream != minigame_bgm:
 		bgm_player.stream = minigame_bgm
+		bgm_player.volume_db = 0.0 # Reset to normal volume
 		bgm_player.play()
 
 func play_reward_sfx() -> void:
