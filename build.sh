@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-GODOT_VERSION="4.2.2"
+GODOT_VERSION="4.3"
 
 echo "Downloading Godot ${GODOT_VERSION}..."
 curl -sL "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -o godot.zip
@@ -37,6 +37,7 @@ encrypt_directory=false
 
 custom_template/debug=""
 custom_template/release=""
+variant/thread_support=false
 variant/extensions_support=false
 vram_texture_compression/for_desktop=true
 vram_texture_compression/for_mobile=false
