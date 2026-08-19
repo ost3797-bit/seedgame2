@@ -44,6 +44,11 @@ var tomato_marker_base_y := -80.0
 var pending_final_dialogue := false
 
 func _ready() -> void:
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
+		
 	if GameManager.use_return_position:
 		var players = get_tree().get_nodes_in_group("player")
 		for p in players:

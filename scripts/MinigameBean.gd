@@ -62,7 +62,10 @@ var current_stage := 1
 var fixed_blocks := [] # Array of Vector2i for current stage
 
 func _ready() -> void:
-	if has_node("/root/MobileUI"): get_node("/root/MobileUI").hide()
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.hide()
+		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	# ─── 1. Grid 노드(ColorRect) 기반 설정 ──────────────────
 	# 에디터에서 빨간 네모(Grid)의 모서리를 드래그해서 크기와 위치를 맞추세요.
@@ -170,22 +173,14 @@ func _get_cell_from_pos(pos: Vector2) -> Vector2i:
 func _unhandled_input(event: InputEvent) -> void:
 	if is_game_over or (start_popup and start_popup.visible): return
 	
-	var mouse_pos = get_global_mouse_position()
-	
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				_try_pickup(mouse_pos)
-			else:
-				_try_drop(mouse_pos)
-	elif event is InputEventScreenTouch:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			_try_pickup(mouse_pos)
+			_try_pickup(event.position)
 		else:
-			_try_drop(mouse_pos)
-	elif event is InputEventMouseMotion or event is InputEventScreenDrag:
+			_try_drop(event.position)
+	elif event is InputEventMouseMotion:
 		if dragged_sprite:
-			dragged_sprite.global_position = mouse_pos + dragged_offset
+			dragged_sprite.global_position = event.position + dragged_offset
 
 func _try_pickup(pos: Vector2) -> void:
 	# Check board first (to move or rotate)
