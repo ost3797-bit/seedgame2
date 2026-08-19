@@ -22,12 +22,18 @@ var spawn_interval := 0.8
 
 var basket_speed := 600.0
 
+var is_dragging := false
+var target_x := 0.0
+
 func _ready() -> void:
 	if has_node("/root/MobileUI"):
-		get_node("/root/MobileUI").hide()
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.hide()
+		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 		
 	seed_template.hide()
 	basket.area_entered.connect(_on_basket_area_entered)
+	target_x = basket.position.x
 	_start_game()
 
 func _exit_tree() -> void:
@@ -64,13 +70,26 @@ func _handle_basket_movement(delta: float) -> void:
 		
 	if move_dir != 0:
 		basket.position.x += move_dir * basket_speed * delta
-	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		var target_x = get_global_mouse_position().x
-		basket.position.x = lerp(basket.position.x, target_x, 15.0 * delta)
+		target_x = basket.position.x
+	elif is_dragging:
+		basket.position.x = lerp(basket.position.x, target_x, 20.0 * delta)
 	
 	# 화면 범위 제한 (1920x1080 기준 중앙 0,0 뷰포트이므로 -960 ~ 960)
 	if basket.position.x < -800: basket.position.x = -800
 	if basket.position.x > 800: basket.position.x = 800
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not game_active: return
+	
+	if event is InputEventMouseButton or event is InputEventScreenTouch:
+		if event.pressed:
+			is_dragging = true
+			target_x = get_global_mouse_position().x
+		else:
+			is_dragging = false
+	elif event is InputEventMouseMotion or event is InputEventScreenDrag:
+		if is_dragging:
+			target_x = get_global_mouse_position().x
 
 func _handle_spawning(delta: float) -> void:
 	spawn_timer -= delta
