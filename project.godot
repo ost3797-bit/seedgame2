@@ -28,7 +28,7 @@ MobileUI="*res://scenes/MobileUI.tscn"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [input_devices]
 
