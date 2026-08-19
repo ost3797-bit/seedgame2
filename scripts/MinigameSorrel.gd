@@ -141,7 +141,7 @@ func _on_success():
 			
 		instruction_label.text = ""
 		rules_popup.show()
-		rules_text.text = "축하합니다!\n\n괭이밥 꼬투리 터뜨리기 미션을\n성공적으로 마쳤습니다!"
+		rules_text.text = "축하합니다!\n\n괭이밥 꼬투리 터뜨리기 미션을\n성공적으로 마쳤습니다!\n\n이제 고양이에게 돌아가세요!"
 		start_btn.text = "돌아가기"
 		
 		if start_btn.pressed.is_connected(_on_start_btn_pressed):

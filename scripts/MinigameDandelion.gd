@@ -205,7 +205,7 @@ func _on_success():
 		if GameManager.dandelion_quest_state == 1:
 			GameManager.dandelion_quest_state = 2
 			
-		rules_text.text = "축하합니다!\n\n민들레 씨앗 비행 미션을\n성공적으로 마쳤습니다!"
+		rules_text.text = "축하합니다!\n\n민들레 씨앗 비행 미션을\n성공적으로 마쳤습니다!\n\n이제 고양이에게 돌아가세요!"
 		start_btn.text = "돌아가기"
 		rules_popup.show()
 		

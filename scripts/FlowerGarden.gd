@@ -38,6 +38,7 @@ var chars_per_sec := 45.0
 var dialogue_queue: Array[String] = []
 var current_speaker := ""
 var _pending_accept := Callable()
+var pending_final_dialogue := false
 
 func _ready() -> void:
 	super._ready() # 부모 클래스의 스폰 로직 실행
@@ -372,13 +373,18 @@ func _interact_cat() -> void:
 			GameManager.collected_seeds += 1
 			reward_card.texture = load("res://assets/game/min/card_min.png")
 			reward_popup.show()
+			pending_final_dialogue = true
 			_update_quest_markers()
 			
 			if seed_ui and seed_ui.has_method("update_counter"):
 				seed_ui.update_counter()
 		)
 	elif GameManager.dandelion_quest_state == 3:
-		_show_dialogue("고양이", ["모든 씨앗을 다 모았다냥! 너는 최고의 씨앗 수집가다 냥!"], func(): pass)
+		_show_dialogue("고양이", [
+			"모든 씨앗을 다 모았다냥! 너는 최고의 씨앗 수집가다 냥!",
+			"수집한 씨앗들은 메인 광장의 '씨앗 보관함'에서 확인할 수 있다냥!",
+			"씨앗 보관함으로 돌아가서 도감을 꽉 채워봐라냥!"
+		], func(): pass)
 
 func _show_dialogue(speaker: String, texts: Array, on_accept: Callable) -> void:
 	if texts.is_empty(): return
@@ -412,3 +418,11 @@ func _accept_dialogue() -> void:
 
 func _on_reward_close_pressed() -> void:
 	reward_popup.hide()
+	
+	if pending_final_dialogue:
+		pending_final_dialogue = false
+		_show_dialogue("고양이", [
+			"모든 씨앗을 다 모았다냥! 너는 최고의 씨앗 수집가다 냥!",
+			"수집한 씨앗들은 메인 광장의 '씨앗 보관함'에서 확인할 수 있다냥!",
+			"씨앗 보관함으로 돌아가서 도감을 꽉 채워봐라냥!"
+		], func(): pass)
