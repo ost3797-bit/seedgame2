@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-GODOT_VERSION="4.3"
+GODOT_VERSION="4.7"
 
 echo "Downloading Godot ${GODOT_VERSION}..."
 curl -sL "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip" -o godot.zip
