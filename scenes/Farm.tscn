@@ -225,6 +225,7 @@ shape = SubResource("RectangleShape2D_portal")
 position = Vector2(-865.11676, 14.470642)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=141349862]
+zoom = Vector2(0.9, 0.9)
 limit_left = -960
 limit_top = -540
 limit_right = 960
