@@ -32,7 +32,10 @@ var spawn_timer := 0.0
 var spawn_interval := 1.0
 
 func _ready() -> void:
-	if has_node("/root/MobileUI"): get_node("/root/MobileUI").hide()
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.hide()
+		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	btn_back.pressed.connect(_on_back_pressed)
 	

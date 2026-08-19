@@ -46,7 +46,10 @@ var start_popup: CanvasLayer
 var is_animating := false
 
 func _ready() -> void:
-	if has_node("/root/MobileUI"): get_node("/root/MobileUI").hide()
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.hide()
+		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	btn_back.pressed.connect(_shuffle_grid)
 	
