@@ -14,8 +14,8 @@ func _ready() -> void:
 		AudioManager.play_minigame_bgm()
 	if has_node("/root/MobileUI"):
 		var m_ui = get_node("/root/MobileUI")
-		m_ui.hide()
-		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
 		
 	for child in get_tree().get_nodes_in_group("hyacinth"):
 		if child is RigidBody2D:
