@@ -34,6 +34,12 @@ func _ready():
 		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	round_success_image.hide()
+
+func _exit_tree() -> void:
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	# 아틀라스 텍스처(잘라낸 이미지) 생성
 	var base_tex = load("res://assets/game/bab/bob_asset.png")

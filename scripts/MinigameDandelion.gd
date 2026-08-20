@@ -44,6 +44,12 @@ func _ready():
 		m_ui.hide()
 		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 		
+func _exit_tree() -> void:
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
+
 	is_showing_rules = true
 	is_game_active = false
 	current_round = 1
