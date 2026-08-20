@@ -34,11 +34,7 @@ func _ready():
 		m_ui.hide()
 		m_ui.process_mode = Node.PROCESS_MODE_DISABLED
 
-func _exit_tree() -> void:
-	if has_node("/root/MobileUI"):
-		var m_ui = get_node("/root/MobileUI")
-		m_ui.show()
-		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
+
 	is_showing_rules = true
 	is_game_active = false
 	rules_popup.show()
@@ -234,3 +230,9 @@ func _show_final_success():
 	start_btn.pressed.connect(func():
 		get_tree().change_scene_to_file("res://scenes/FlowerGarden.tscn")
 	)
+
+func _exit_tree() -> void:
+	if has_node("/root/MobileUI"):
+		var m_ui = get_node("/root/MobileUI")
+		m_ui.show()
+		m_ui.process_mode = Node.PROCESS_MODE_INHERIT
