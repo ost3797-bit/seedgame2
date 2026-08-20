@@ -85,6 +85,17 @@ func _show_instruction_popup() -> void:
 	panel.add_child(start_btn)
 	
 	start_btn.pressed.connect(func():
+		if OS.has_feature("web"):
+			var js_code = """
+				if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+					DeviceOrientationEvent.requestPermission().catch(console.error);
+				}
+				if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
+					DeviceMotionEvent.requestPermission().catch(console.error);
+				}
+			"""
+			JavaScriptBridge.eval(js_code)
+			
 		inst_layer.queue_free()
 		game_active = true
 	)
