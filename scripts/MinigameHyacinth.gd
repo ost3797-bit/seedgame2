@@ -87,6 +87,12 @@ func _show_instruction_popup() -> void:
 	start_btn.pressed.connect(func():
 		if OS.has_feature("web"):
 			var js_code = """
+				window.tiltX = 0;
+				window.tiltY = 0;
+				window.addEventListener('deviceorientation', function(e) {
+					window.tiltX = e.gamma;
+					window.tiltY = e.beta;
+				});
 				if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
 					DeviceOrientationEvent.requestPermission().catch(console.error);
 				}
@@ -104,9 +110,19 @@ func _physics_process(delta: float) -> void:
 	if not game_active: return
 	
 	var tilt_dir = Vector2.ZERO
-	# 스마트폰 기울기 센서 (가속도계) 입력
-	var accel = Input.get_accelerometer()
-	tilt_dir = Vector2(accel.x, -accel.y)
+	
+	if OS.has_feature("web"):
+		var js_x = JavaScriptBridge.eval("window.tiltX")
+		var js_y = JavaScriptBridge.eval("window.tiltY")
+		if js_x != null and js_y != null:
+			# gamma (js_x) is left/right tilt. beta (js_y) is front/back tilt.
+			var tx = clamp(float(js_x) / 30.0, -1.0, 1.0) * 10.0
+			var ty = clamp(float(js_y) / 30.0, -1.0, 1.0) * 10.0
+			tilt_dir = Vector2(tx, ty)
+	else:
+		# 스마트폰 기울기 센서 (가속도계) 입력 (안드로이드 등 네이티브 앱)
+		var accel = Input.get_accelerometer()
+		tilt_dir = Vector2(accel.x, -accel.y)
 	
 	# PC 테스트용 화살표 키 폴백
 	if tilt_dir.length() < 0.1:
