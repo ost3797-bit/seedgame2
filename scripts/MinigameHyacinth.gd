@@ -87,12 +87,41 @@ func _show_instruction_popup() -> void:
 	start_btn.pressed.connect(func():
 		if OS.has_feature("web"):
 			var js_code = """
+				window.tiltBaseX = null;
+				window.tiltBaseY = null;
 				window.tiltX = 0;
 				window.tiltY = 0;
-				window.addEventListener('deviceorientation', function(e) {
-					window.tiltX = e.gamma;
-					window.tiltY = e.beta;
-				});
+				
+				if (typeof window.tiltSetup === 'undefined') {
+					window.addEventListener('deviceorientation', function(e) {
+						if (e.gamma === null || e.beta === null) return;
+						var orientation = (window.screen.orientation || {}).type || window.orientation || 0;
+						
+						var rawX = e.gamma; // -90 to 90
+						var rawY = e.beta;  // -180 to 180
+						var mappedX = rawX;
+						var mappedY = rawY;
+						
+						// Landscape compensation
+						if (orientation === 90 || orientation === 'landscape-primary') {
+							mappedX = e.beta;
+							mappedY = -e.gamma;
+						} else if (orientation === -90 || orientation === 'landscape-secondary') {
+							mappedX = -e.beta;
+							mappedY = e.gamma;
+						}
+						
+						if (window.tiltBaseX === null) {
+							window.tiltBaseX = mappedX;
+							window.tiltBaseY = mappedY;
+						}
+						
+						window.tiltX = mappedX - window.tiltBaseX;
+						window.tiltY = mappedY - window.tiltBaseY;
+					});
+					window.tiltSetup = true;
+				}
+				
 				if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
 					DeviceOrientationEvent.requestPermission().catch(console.error);
 				}
@@ -115,9 +144,11 @@ func _physics_process(delta: float) -> void:
 		var js_x = JavaScriptBridge.eval("window.tiltX")
 		var js_y = JavaScriptBridge.eval("window.tiltY")
 		if js_x != null and js_y != null:
-			# gamma (js_x) is left/right tilt. beta (js_y) is front/back tilt.
-			var tx = clamp(float(js_x) / 30.0, -1.0, 1.0) * 10.0
-			var ty = clamp(float(js_y) / 30.0, -1.0, 1.0) * 10.0
+			# tiltX > 0 means tilted right -> Godot X > 0
+			# tiltY < 0 means tilted away (top down) -> Godot Y < 0 (UP)
+			# clamp at 20 degrees for max speed
+			var tx = clamp(float(js_x) / 20.0, -1.0, 1.0) * 10.0
+			var ty = clamp(float(js_y) / 20.0, -1.0, 1.0) * 10.0
 			tilt_dir = Vector2(tx, ty)
 	else:
 		# 스마트폰 기울기 센서 (가속도계) 입력 (안드로이드 등 네이티브 앱)
